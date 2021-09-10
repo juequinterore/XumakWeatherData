@@ -16,7 +16,7 @@ class GetTopCitiesTest {
 
         override fun getTopCities(): Flow<List<City>> = flow { emit(topCities) }
 
-        override fun searchCityByName(name: String): City? {
+        override suspend fun searchCityByName(name: String): City? {
             TODO("Not yet implemented")
         }
 

@@ -18,7 +18,7 @@ class SearchCityByNameTest {
             TODO("Not yet implemented")
         }
 
-        override fun searchCityByName(name: String): City? = city
+        override suspend fun searchCityByName(name: String): City? = city
 
     }
 
