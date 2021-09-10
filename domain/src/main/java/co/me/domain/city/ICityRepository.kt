@@ -7,4 +7,6 @@ interface ICityRepository {
 
     fun getTopCities(): Flow<List<City>>
 
+    fun searchCityByName(name: String): City?
+
 }

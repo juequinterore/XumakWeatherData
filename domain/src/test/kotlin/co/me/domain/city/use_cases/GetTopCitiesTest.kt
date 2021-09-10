@@ -10,13 +10,17 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
-class FakeCityRepository(private val topCities: List<City>) : ICityRepository {
-
-    override fun getTopCities(): Flow<List<City>> = flow { emit(topCities) }
-
-}
-
 class GetTopCitiesTest {
+
+    private class FakeCityRepository(private val topCities: List<City>) : ICityRepository {
+
+        override fun getTopCities(): Flow<List<City>> = flow { emit(topCities) }
+
+        override fun searchCityByName(name: String): City? {
+            TODO("Not yet implemented")
+        }
+
+    }
 
     @Test
     fun `should return top cities from received CityRepository`() = runBlocking {
