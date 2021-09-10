@@ -10,4 +10,5 @@ java {
 
 dependencies {
     implementation deps.junit.junit
+    implementation deps.coroutines.core
 }
