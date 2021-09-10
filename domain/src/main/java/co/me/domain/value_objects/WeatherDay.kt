@@ -5,5 +5,5 @@ data class WeatherDay(
     val low: Int,
     val high: Int,
     val weatherType: WeatherType,
-    val hourlyWeather: List<HourlyWeather>
+    val hourlyWeather: Map<DayHour, HourlyWeather>
 )
