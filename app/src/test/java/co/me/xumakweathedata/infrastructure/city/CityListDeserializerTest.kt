@@ -3,7 +3,7 @@ package co.me.xumakweathedata.infrastructure.city
 import com.google.gson.Gson
 import com.google.gson.JsonElement
 import com.google.gson.reflect.TypeToken
-import junit.framework.Assert.assertEquals
+import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.io.File
 import java.lang.reflect.Type
