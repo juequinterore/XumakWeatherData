@@ -1,10 +1,12 @@
 package co.me.domain.value_objects
 
 enum class WeatherType(val value: String) {
-    SUNNY("sunny"),
     CLOUDY("cloudy"),
+    LIGHTRAIN("lightRain"),
+    HEAVYRAIN("heavyRain"),
+    PARTLYCLOUDY("partlyCloudy"),
     SNOWSLEET("snowSleet"),
-    HEAVYRAIN("heavyRain");
+    SUNNY("sunny");
 
     companion object {
         fun fromString(value: String): WeatherType {
