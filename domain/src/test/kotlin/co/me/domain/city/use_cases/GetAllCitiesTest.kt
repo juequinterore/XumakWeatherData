@@ -17,6 +17,9 @@ class GetAllCitiesTest {
     private class FakeCityRepository(private val topCities: List<City>) : ICityRepository {
 
         override fun getAllCities(): Flow<List<City>> = flow { emit(topCities) }
+        override suspend fun insert(city: City) {
+            TODO("Not yet implemented")
+        }
 
         override suspend fun searchCityByName(name: String): City? {
             TODO("Not yet implemented")
