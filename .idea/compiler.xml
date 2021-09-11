@@ -3,6 +3,7 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.8">
       <module name="XumakWeatheData.app" target="11" />
+      <module name="XumakWeatheData.infrastructure" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

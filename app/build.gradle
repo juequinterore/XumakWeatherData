@@ -51,9 +51,7 @@ dependencies {
     implementation deps.compose.compose_ui_tooling_preview
     implementation deps.androidx.lifecycle_runtime_ktx
     implementation deps.androidx.activity_compose
-    implementation deps.retrofit.retrofit
-    implementation deps.retrofit.gson_converter
-    implementation deps.gson.gson
+
     testImplementation deps.junit.junit
     androidTestImplementation deps.androidx.android_junit_ext
     androidTestImplementation deps.androidx.espresso_core
