@@ -59,4 +59,5 @@ dependencies {
     debugImplementation deps.compose.ui_tooling
 
     implementation project(':domain')
+    implementation project(':infrastructure')
 }
