@@ -1,11 +1,15 @@
 package co.me.infrastructure.city.dtos
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import co.me.domain.entities.City
 import co.me.domain.value_objects.WeekDay
 import co.me.domain.value_objects.XUrl
 
+@Entity(tableName = "cities")
 data class CityDto(
-    val geonameid: Int,
+    @PrimaryKey @ColumnInfo(name = "id") val geonameid: Int,
     val name: String,
     val imageUrl: String,
     val weather: Map<Int, WeatherDayDto>
