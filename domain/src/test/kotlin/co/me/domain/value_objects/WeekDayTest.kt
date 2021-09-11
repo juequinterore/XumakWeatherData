@@ -1,6 +1,6 @@
 package co.me.domain.value_objects
 
-import junit.framework.Assert.assertEquals
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class WeekDayTest {
