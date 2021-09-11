@@ -1,4 +1,4 @@
-package co.me.xumakweathedata.infrastructure.city
+package co.me.xumakweathedata.infrastructure.city.dtos
 
 data class HourlyWeatherDto(
     val rainChance: Double,
@@ -7,4 +7,6 @@ data class HourlyWeatherDto(
     val weatherType: String,
     val windSpeed: Int,
     val temperature: Int
-)
+) {
+    companion object
+}
