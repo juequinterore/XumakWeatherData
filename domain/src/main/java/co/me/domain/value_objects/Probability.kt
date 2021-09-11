@@ -7,4 +7,13 @@ value class Probability(val value: Double) {
             "$value must be between [0, 1]"
         }
     }
+
+    fun toPercentageString(): String {
+        val dotCero = ".0"
+        var valueString = (value * 100).toString()
+        if (valueString.endsWith(dotCero)) {
+            valueString = valueString.replace(dotCero, "")
+        }
+        return "${valueString}%"
+    }
 }
