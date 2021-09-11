@@ -6,7 +6,7 @@ import co.me.infrastructure.city.repository.data_sources.ICityRemoteDataSource
 import kotlinx.coroutines.flow.Flow
 
 class CityRepository(private val remoteRemoteDataSource: ICityRemoteDataSource) : ICityRepository {
-    override fun getTopCities(): Flow<List<City>> {
+    override fun getAllCities(): Flow<List<City>> {
         TODO("Not yet implemented")
     }
 

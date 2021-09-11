@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface ICityRepository {
 
-    fun getTopCities(): Flow<List<City>>
+    fun getAllCities(): Flow<List<City>>
 
     suspend fun searchCityByName(name: String): City?
 

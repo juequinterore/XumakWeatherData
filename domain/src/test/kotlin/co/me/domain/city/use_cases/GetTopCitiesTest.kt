@@ -14,7 +14,7 @@ class GetTopCitiesTest {
 
     private class FakeCityRepository(private val topCities: List<City>) : ICityRepository {
 
-        override fun getTopCities(): Flow<List<City>> = flow { emit(topCities) }
+        override fun getAllCities(): Flow<List<City>> = flow { emit(topCities) }
 
         override suspend fun searchCityByName(name: String): City? {
             TODO("Not yet implemented")
@@ -41,13 +41,13 @@ class GetTopCitiesTest {
         )
 
         val mockCityRepository = FakeCityRepository(topCities = cities)
-        val getTopCitiesUseCase = GetTopCities(mockCityRepository)
+        val getTopCitiesUseCase = GetAllCities(mockCityRepository)
 
         //Act
-        val topCities = getTopCitiesUseCase(Unit).first()
+        val allCities = getTopCitiesUseCase(Unit).first()
 
         //Assert
-        assertEquals(topCities, cities)
+        assertEquals(allCities, cities)
     }
 
 }
