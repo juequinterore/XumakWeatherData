@@ -12,7 +12,7 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
-class GetTopCitiesTest {
+class GetAllCitiesTest {
 
     private class FakeCityRepository(private val topCities: List<City>) : ICityRepository {
 
