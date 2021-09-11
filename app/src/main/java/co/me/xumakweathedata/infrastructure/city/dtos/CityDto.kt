@@ -1,4 +1,4 @@
-package co.me.xumakweathedata.infrastructure.city
+package co.me.xumakweathedata.infrastructure.city.dtos
 
 data class CityDto(
     val geonameid: Int,
