@@ -4,8 +4,8 @@ import co.me.domain.value_objects.*
 import co.me.infrastructure.city.dtos.CityDto
 import co.me.infrastructure.city.dtos.HourlyWeatherDto
 import co.me.infrastructure.city.dtos.WeatherDayDto
-import co.me.infrastructure.city.repository.data_sources.ICityLocalDataSource
 import co.me.infrastructure.city.repository.data_sources.ICityRemoteDataSource
+import co.me.infrastructure.city.repository.data_sources.local.ICityLocalDataSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
@@ -49,6 +49,10 @@ class FakeCityLocalDataSource(private val allCities: List<CityDto> = emptyList()
 
     val isGetAllCitiesCalled
         get() = _isGetAllCitiesCalled
+
+    override fun insert(citiDto: CityDto) {
+        TODO("Not yet implemented")
+    }
 
     override fun getAllCities(): Flow<List<CityDto>> {
         _isGetAllCitiesCalled = true

@@ -4,8 +4,8 @@ import co.me.domain.city.ICityRepository
 import co.me.domain.entities.City
 import co.me.domain.value_objects.WeatherDay
 import co.me.domain.value_objects.WeekDay
-import co.me.infrastructure.city.repository.data_sources.ICityLocalDataSource
 import co.me.infrastructure.city.repository.data_sources.ICityRemoteDataSource
+import co.me.infrastructure.city.repository.data_sources.local.ICityLocalDataSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
