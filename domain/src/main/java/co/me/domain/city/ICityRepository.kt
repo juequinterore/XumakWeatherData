@@ -9,6 +9,8 @@ interface ICityRepository {
 
     fun getAllCities(): Flow<List<City>>
 
+    suspend fun insert(city: City)
+
     suspend fun searchCityByName(name: String): City?
 
     suspend fun getCityWeather(cityId: Int): Map<WeekDay, WeatherDay>

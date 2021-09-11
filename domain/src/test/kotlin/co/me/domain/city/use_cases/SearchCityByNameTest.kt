@@ -2,9 +2,7 @@ package co.me.domain.city.use_cases
 
 import co.me.domain.city.ICityRepository
 import co.me.domain.entities.City
-import co.me.domain.value_objects.WeatherDay
-import co.me.domain.value_objects.WeekDay
-import co.me.domain.value_objects.XUrl
+import co.me.domain.value_objects.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
@@ -14,7 +12,10 @@ import org.junit.Test
 
 class SearchCityByNameTest {
 
-    private class FakeCityRepository(private val city: City? = null) : ICityRepository {
+    private class FakeCityRepository(
+        private val city: City? = null,
+        private val weather: Map<WeekDay, WeatherDay> = mapOf()
+    ) : ICityRepository {
 
         private var _cityName: String? = null
 
@@ -26,22 +27,29 @@ class SearchCityByNameTest {
             TODO("Not yet implemented")
         }
 
+        override suspend fun insert(city: City) {
+            TODO("Not yet implemented")
+        }
+
         override suspend fun searchCityByName(name: String): City? {
             _cityName = name
             return city
         }
 
         override suspend fun getCityWeather(cityId: Int): Map<WeekDay, WeatherDay> {
-            TODO("Not yet implemented")
+            return if (cityId == city?.id)
+                weather
+            else
+                mapOf()
         }
-
     }
 
     @Test
     fun `should call repository searchCityByName with received name`() = runBlocking {
         //Arrange
         val mockCityRepository = FakeCityRepository()
-        val searchCityByName = SearchCityByName(mockCityRepository)
+        val getCityWeather = GetCityWeather(mockCityRepository)
+        val searchCityByName = SearchCityByName(mockCityRepository, getCityWeather)
 
         //Act
         searchCityByName(SearchCityByNameCommand("Medel"))
@@ -60,8 +68,9 @@ class SearchCityByNameTest {
             weather = emptyMap()
         )
 
-        val mockCityRepository = FakeCityRepository(city = city)
-        val searchCityByName = SearchCityByName(mockCityRepository)
+        val mockCityRepository = FakeCityRepository(city = city, weather = weather)
+        val getCityWeather = GetCityWeather(mockCityRepository)
+        val searchCityByName = SearchCityByName(mockCityRepository, getCityWeather)
 
         //Act
         val cityAnswer = searchCityByName(SearchCityByNameCommand("Medel"))
@@ -76,7 +85,8 @@ class SearchCityByNameTest {
         runBlocking {
             //Arrange
             val mockCityRepository = FakeCityRepository(city = null)
-            val searchCityByName = SearchCityByName(mockCityRepository)
+            val getCityWeather = GetCityWeather(mockCityRepository)
+            val searchCityByName = SearchCityByName(mockCityRepository, getCityWeather)
 
             //Act
             val cityAnswer = searchCityByName(SearchCityByNameCommand("Mace"))

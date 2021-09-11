@@ -4,6 +4,7 @@ import co.me.domain.city.ICityRepository
 import co.me.domain.entities.City
 import co.me.domain.value_objects.WeatherDay
 import co.me.domain.value_objects.WeekDay
+import co.me.infrastructure.city.dtos.CityDto
 import co.me.infrastructure.city.repository.data_sources.ICityRemoteDataSource
 import co.me.infrastructure.city.repository.data_sources.local.ICityLocalDataSource
 import kotlinx.coroutines.flow.Flow
@@ -14,7 +15,14 @@ class CityRepository(
     private val localCityDataSource: ICityLocalDataSource
 ) : ICityRepository {
     override fun getAllCities(): Flow<List<City>> =
-        localCityDataSource.getAllCities().map { allCityDts -> allCityDts.map { it.toDomain() } }
+        localCityDataSource.getAllCities()
+            .map { allCityDts ->
+                allCityDts.map { it.toDomain() }
+            }
+
+    override suspend fun insert(city: City) =
+        localCityDataSource.insert(CityDto.fromDomain(city))
+
 
     override suspend fun searchCityByName(name: String): City? =
         remoteCityDataSource.searchCityByName(name)?.toDomain()
