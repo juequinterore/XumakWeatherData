@@ -2,6 +2,8 @@ package co.me.domain.city.use_cases
 
 import co.me.domain.city.ICityRepository
 import co.me.domain.entities.City
+import co.me.domain.value_objects.WeatherDay
+import co.me.domain.value_objects.WeekDay
 import co.me.domain.value_objects.XUrl
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.runBlocking
@@ -12,14 +14,40 @@ import org.junit.Test
 
 class SearchCityByNameTest {
 
-    private class FakeCityRepository(private val city: City?) : ICityRepository {
+    private class FakeCityRepository(private val city: City? = null) : ICityRepository {
+
+        private var _cityName: String? = null
+
+        val cityName: String?
+            get() = _cityName
+
 
         override fun getAllCities(): Flow<List<City>> {
             TODO("Not yet implemented")
         }
 
-        override suspend fun searchCityByName(name: String): City? = city
+        override suspend fun searchCityByName(name: String): City? {
+            _cityName = name
+            return city
+        }
 
+        override suspend fun getCityWeather(cityId: Int): Map<WeekDay, WeatherDay> {
+            TODO("Not yet implemented")
+        }
+
+    }
+
+    @Test
+    fun `should call repository searchCityByName with received name`() = runBlocking {
+        //Arrange
+        val mockCityRepository = FakeCityRepository()
+        val searchCityByName = SearchCityByName(mockCityRepository)
+
+        //Act
+        searchCityByName(SearchCityByNameCommand("Medel"))
+
+        //Assert
+        assertEquals(mockCityRepository.cityName, "Medel")
     }
 
     @Test
