@@ -30,14 +30,12 @@ class GetTopCitiesTest {
                 id = 111,
                 name = "Medellín",
                 imageUrl = XUrl("https://medellin.gov.co/image.png"),
-                isTopCity = true,
                 weather = emptyMap()
             ),
             City(
                 id = 112,
                 name = "Brisbane",
                 imageUrl = XUrl("https://brisbane.gov.co/image.png"),
-                isTopCity = true,
                 weather = emptyMap()
             )
         )

@@ -37,7 +37,6 @@ class CityListDeserializerTest {
                 geonameid = 4053050,
                 name = "Calera",
                 imageUrl = "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/xhdpi/img_austin.png",
-                isTopCity = false,
                 weather = emptyMap()
             ),
 
@@ -45,7 +44,6 @@ class CityListDeserializerTest {
                 geonameid = 4054852,
                 name = "Chelsea",
                 imageUrl = "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/xhdpi/img_dallas.png",
-                isTopCity = false,
                 weather = emptyMap()
             ),
 
@@ -53,7 +51,6 @@ class CityListDeserializerTest {
                 geonameid = 4049979,
                 name = "Birmingham",
                 imageUrl = "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/xhdpi/img_austin.png",
-                isTopCity = false,
                 weather = emptyMap()
             ),
 
@@ -61,7 +58,6 @@ class CityListDeserializerTest {
                 geonameid = 4055045,
                 name = "Childersburg",
                 imageUrl = "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/xhdpi/img_sanfranisco.png",
-                isTopCity = false,
                 weather = emptyMap()
             ),
 
@@ -69,7 +65,6 @@ class CityListDeserializerTest {
                 geonameid = 4048888,
                 name = "Red Chute",
                 imageUrl = "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/xhdpi/img_dallas.png",
-                isTopCity = false,
                 weather = emptyMap()
             ),
 
@@ -77,7 +72,6 @@ class CityListDeserializerTest {
                 geonameid = 4054996,
                 name = "Chickasaw",
                 imageUrl = "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/xhdpi/img_austin.png",
-                isTopCity = false,
                 weather = emptyMap()
             )
         )

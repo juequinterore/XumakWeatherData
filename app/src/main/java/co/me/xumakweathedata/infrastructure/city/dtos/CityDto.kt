@@ -8,7 +8,6 @@ data class CityDto(
     val geonameid: Int,
     val name: String,
     val imageUrl: String,
-    val isTopCity: Boolean,
     val weather: Map<Int, WeatherDayDto>
 ) {
 
@@ -16,7 +15,6 @@ data class CityDto(
         id = geonameid,
         name = name,
         imageUrl = XUrl(imageUrl),
-        isTopCity = false,
         weather = weather.entries.fold(mutableMapOf()) { acc, entry ->
             acc[WeekDay(entry.key)] = entry.value.toDomain()
             acc

@@ -47,7 +47,6 @@ class CityRepositoryTest {
         val fakeCityDto = CityDto(
             geonameid = 20001201,
             name = "Medellín",
-            isTopCity = false,
             imageUrl = "https://myImage.co/image.jpg",
             weather = mapOf()
         )

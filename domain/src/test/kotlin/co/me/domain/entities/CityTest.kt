@@ -81,7 +81,6 @@ class CityTest {
             id = 45150,
             name = "Medellín",
             imageUrl = XUrl("https://medellin.gov.co/image.png"),
-            isTopCity = false,
             weather = weatherDays
         )
 
@@ -135,7 +134,6 @@ class CityTest {
             id = 45150,
             name = "Medellín",
             imageUrl = XUrl("https://medellin.gov.co/image.png"),
-            isTopCity = false,
             weather = weatherDays
         )
 

@@ -28,7 +28,6 @@ class CityListDeserializer : JsonDeserializer<List<CityDto>> {
                 geonameid = geonameid!!,
                 name = name!!,
                 imageUrl = imageUrl!!,
-                isTopCity = false,
                 weather = mapOf()
             )
         }

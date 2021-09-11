@@ -29,7 +29,6 @@ class SearchCityByNameTest {
             id = 111,
             name = "Medellín",
             imageUrl = XUrl("https://medellin.gov.co/image.png"),
-            isTopCity = true,
             weather = emptyMap()
         )
 
