@@ -35,7 +35,7 @@ class WeatherDayDtoExtKtTest {
                     rainChance = 0.0,
                     temperature = 96,
                     humidity = 0.1,
-                    windSpeed = 6
+                    windSpeed = 6.0
                 ),
                 1 to HourlyWeatherDto(
                     weatherType = "sunny",
@@ -43,7 +43,7 @@ class WeatherDayDtoExtKtTest {
                     rainChance = 0.0,
                     temperature = 95,
                     humidity = 0.1,
-                    windSpeed = 6
+                    windSpeed = 6.0
                 ),
                 2 to HourlyWeatherDto(
                     weatherType = "sunny",
@@ -51,7 +51,7 @@ class WeatherDayDtoExtKtTest {
                     rainChance = 0.0,
                     temperature = 94,
                     humidity = 0.1,
-                    windSpeed = 6
+                    windSpeed = 6.0
                 )
             )
         )

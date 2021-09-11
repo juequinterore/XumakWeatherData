@@ -10,7 +10,7 @@ fun HourlyWeatherDto.Companion.fromJsonElement(hourlyWeatherDtoJsonElement: Json
     val hour = hourlyWeatherJson?.get("hour")?.asInt
     val humidity = hourlyWeatherJson?.get("humidity")?.asDouble
     val weatherType = hourlyWeatherJson?.get("weatherType")?.asString
-    val windSpeed = hourlyWeatherJson?.get("windSpeed")?.asInt
+    val windSpeed = hourlyWeatherJson?.get("windSpeed")?.asDouble
     val temperature = hourlyWeatherJson?.get("temperature")?.asInt
 
     return HourlyWeatherDto(

@@ -29,7 +29,7 @@ class HourlyWeatherDtoExtKtTest {
             rainChance = 0.9,
             temperature = 96,
             humidity = 0.1,
-            windSpeed = 6
+            windSpeed = 6.0
         )
 
         assertEquals(hourlyWeatherDto, expectedHourlyWeatherDto)
