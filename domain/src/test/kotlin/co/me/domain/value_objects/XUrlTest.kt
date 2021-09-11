@@ -37,4 +37,14 @@ class XUrlTest {
         assertEquals(xUrl.value, "https://api.notAnUrl.com")
     }
 
+    @Test
+    fun `should allow AWS url`() {
+        val xUrl =
+            XUrl("https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/xhdpi/img_austin.png")
+        assertEquals(
+            xUrl.value,
+            "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/xhdpi/img_austin.png"
+        )
+    }
+
 }
