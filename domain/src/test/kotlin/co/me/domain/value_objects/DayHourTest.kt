@@ -33,4 +33,51 @@ class DayHourTest {
         assertEquals(dayHour.value, 23)
     }
 
+    @Test
+    fun `should return 0AM if hour is 0`() {
+        //Arrange
+        val dayHour = DayHour(0)
+
+        //Act
+        val hourString = dayHour.to12HoursString()
+
+        //Assert
+        assertEquals("0AM", hourString)
+    }
+
+    @Test
+    fun `should return 12PM if hour is 12`() {
+        //Arrange
+        val dayHour = DayHour(12)
+
+        //Act
+        val hourString = dayHour.to12HoursString()
+
+        //Assert
+        assertEquals("12PM", hourString)
+    }
+
+    @Test
+    fun `should return 3PM if hour is 15`() {
+        //Arrange
+        val dayHour = DayHour(15)
+
+        //Act
+        val hourString = dayHour.to12HoursString()
+
+        //Assert
+        assertEquals("3PM", hourString)
+    }
+
+    @Test
+    fun `should return 11PM if hour is 23`() {
+        //Arrange
+        val dayHour = DayHour(23)
+
+        //Act
+        val hourString = dayHour.to12HoursString()
+
+        //Assert
+        assertEquals("11PM", hourString)
+    }
 }
