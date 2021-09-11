@@ -60,6 +60,7 @@ dependencies {
     implementation deps.androidx.lifecycle_runtime_ktx
     implementation deps.androidx.activity_compose
     implementation deps.koin.android
+    implementation deps.landscapist.glide
 
     testImplementation deps.junit.junit
     androidTestImplementation deps.androidx.android_junit_ext
