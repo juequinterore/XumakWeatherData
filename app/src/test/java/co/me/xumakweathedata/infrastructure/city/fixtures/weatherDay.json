@@ -1,0 +1,32 @@
+{
+  "high": 110,
+  "dayOfTheWeek": 0,
+  "weatherType": "sunny",
+  "hourlyWeather": [
+    {
+      "weatherType": "sunny",
+      "hour": 0,
+      "rainChance": 0,
+      "temperature": 96,
+      "humidity": 0.1,
+      "windSpeed": 6
+    },
+    {
+      "windSpeed": 6,
+      "hour": 1,
+      "temperature": 95,
+      "rainChance": 0,
+      "humidity": 0.1,
+      "weatherType": "sunny"
+    },
+    {
+      "weatherType": "sunny",
+      "rainChance": 0,
+      "temperature": 94,
+      "hour": 2,
+      "humidity": 0.1,
+      "windSpeed": 6
+    }
+  ],
+  "low": 87
+}
