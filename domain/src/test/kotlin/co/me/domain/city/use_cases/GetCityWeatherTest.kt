@@ -21,6 +21,10 @@ class GetCityWeatherTest {
             TODO("Not yet implemented")
         }
 
+        override suspend fun insert(city: City) {
+            TODO("Not yet implemented")
+        }
+
         override suspend fun searchCityByName(name: String): City? {
             TODO("Not yet implemented")
         }
