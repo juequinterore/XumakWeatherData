@@ -9,3 +9,4 @@ rootProject.name = "XumakWeatheData"
 include ':app'
 include ':domain'
 include ':infrastructure'
+include ':di'
