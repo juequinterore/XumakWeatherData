@@ -33,7 +33,7 @@ abstract class XumakWeatherDatabase : RoomDatabase() {
                     instance = Room.databaseBuilder(
                         context.applicationContext,
                         XumakWeatherDatabase::class.java,
-                        "sleep_history_database"
+                        "xumak_weather"
                     )
                         .build()
                     INSTANCE = instance
