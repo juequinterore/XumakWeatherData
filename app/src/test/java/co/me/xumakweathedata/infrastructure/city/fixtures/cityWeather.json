@@ -1,0 +1,102 @@
+{
+  "weather": {
+    "id": 1,
+    "days": [
+      {
+        "high": 110,
+        "dayOfTheWeek": 0,
+        "weatherType": "sunny",
+        "hourlyWeather": [
+          {
+            "weatherType": "sunny",
+            "rainChance": 0,
+            "temperature": 94,
+            "hour": 2,
+            "humidity": 0.1,
+            "windSpeed": 6
+          },
+          {
+            "windSpeed": 6,
+            "rainChance": 0,
+            "hour": 14,
+            "temperature": 108,
+            "humidity": 0.1,
+            "weatherType": "sunny"
+          },
+          {
+            "windSpeed": 6,
+            "rainChance": 0,
+            "temperature": 109,
+            "hour": 15,
+            "humidity": 0.1,
+            "weatherType": "sunny"
+          }
+        ],
+        "low": 87
+      },
+      {
+        "high": 120,
+        "dayOfTheWeek": 4,
+        "weatherType": "sunny",
+        "hourlyWeather": [
+          {
+            "weatherType": "sunny",
+            "hour": 0,
+            "temperature": 104,
+            "rainChance": 0,
+            "humidity": 0.1,
+            "windSpeed": 6
+          },
+          {
+            "windSpeed": 6,
+            "rainChance": 0,
+            "temperature": 98,
+            "hour": 7,
+            "humidity": 0.1,
+            "weatherType": "sunny"
+          },
+          {
+            "windSpeed": 6,
+            "hour": 23,
+            "temperature": 109,
+            "rainChance": 0,
+            "humidity": 0.1,
+            "weatherType": "sunny"
+          }
+        ],
+        "low": 96
+      }
+    ]
+  },
+  "city": {
+    "dem": 15,
+    "admin1 code": "FL",
+    "alternatenames": "",
+    "elevation": 6,
+    "feature class": "P",
+    "timezone": "America/New_York",
+    "name": "Trinity",
+    "country code": "US",
+    "admin3 code": null,
+    "population": 10907,
+    "admin4 code": "",
+    "latitude": 28.18085,
+    "asciiname": "Trinity",
+    "longitude": -82.68177,
+    "geonameid": 4047906,
+    "modification date": "5/14/11",
+    "cc2": "",
+    "admin2 code": 101,
+    "feature code": "PPL",
+    "imageURLs": {
+      "iOSImageURLs": {
+        "imageURL": "https://candidate-exam-resources.s3.amazonaws.com/Images/iOS_City_Images/img_dallas@2x.png"
+      },
+      "androidImageURLs": {
+        "xhdpiImageURL": "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/xhdpi/img_dallas.png",
+        "hdpiImageURL": "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/hdpi/img_dallas.png",
+        "mdpiImageURL": "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/mdpi/img_dallas.png"
+      }
+    }
+  }
+}
