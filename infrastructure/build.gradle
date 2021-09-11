@@ -1,19 +1,29 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
-    compileSdk 31
+    compileSdk deps.build_versions.compile_sdk
 
     defaultConfig {
-        minSdk 23
-        targetSdk 31
+        minSdk deps.build_versions.min_sdk
+        targetSdk deps.build_versions.target_sdk
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += [
+                        "room.schemaLocation"  : "$projectDir/schemas".toString(),
+                        "room.incremental"     : "true",
+                        "room.expandProjection": "true"]
+            }
+        }
     }
 
     buildTypes {
@@ -22,6 +32,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    packagingOptions {
+        exclude 'META-INF/AL2.0'
+        exclude 'META-INF/LGPL2.1'
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -30,15 +46,21 @@ android {
         jvmTarget = '1.8'
     }
 }
-
 dependencies {
 
     implementation deps.coroutines.core
     implementation deps.gson.gson
     implementation deps.retrofit.retrofit
     implementation deps.retrofit.gson_converter
+    implementation deps.room.room_runtime
+    implementation deps.room.android_ktx
+    kapt deps.room.room_compiler
 
     testImplementation deps.junit.junit
+
+    androidTestImplementation deps.androidx.android_junit_ext
+    androidTestImplementation deps.androidx.espresso_core
+    androidTestImplementation deps.compose.ui_test_junit4
 
     implementation project(':domain')
 }
