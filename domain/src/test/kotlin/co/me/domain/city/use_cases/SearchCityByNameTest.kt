@@ -14,7 +14,7 @@ class SearchCityByNameTest {
 
     private class FakeCityRepository(private val city: City?) : ICityRepository {
 
-        override fun getTopCities(): Flow<List<City>> {
+        override fun getAllCities(): Flow<List<City>> {
             TODO("Not yet implemented")
         }
 
