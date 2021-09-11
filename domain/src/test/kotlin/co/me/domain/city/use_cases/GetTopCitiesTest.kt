@@ -2,6 +2,8 @@ package co.me.domain.city.use_cases
 
 import co.me.domain.city.ICityRepository
 import co.me.domain.entities.City
+import co.me.domain.value_objects.WeatherDay
+import co.me.domain.value_objects.WeekDay
 import co.me.domain.value_objects.XUrl
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
@@ -17,6 +19,10 @@ class GetTopCitiesTest {
         override fun getAllCities(): Flow<List<City>> = flow { emit(topCities) }
 
         override suspend fun searchCityByName(name: String): City? {
+            TODO("Not yet implemented")
+        }
+
+        override suspend fun getCityWeather(cityId: Int): Map<WeekDay, WeatherDay> {
             TODO("Not yet implemented")
         }
 
