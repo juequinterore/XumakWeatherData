@@ -23,5 +23,17 @@ data class WeatherDayDto(
             acc
         })
 
-    companion object
+    companion object {
+        fun fromDomain(weatherDay: WeatherDay) =
+            WeatherDayDto(dayOfTheWeek = weatherDay.dayOfTheWeek.value,
+                weatherType = weatherDay.weatherType.value,
+                low = weatherDay.low,
+                high = weatherDay.high,
+                hourlyWeather = weatherDay.hourlyWeather.entries.fold(
+                    mutableMapOf()
+                ) { acc, entry ->
+                    acc[entry.key.value] = HourlyWeatherDto.fromDomain(entry.value)
+                    acc
+                })
+    }
 }
