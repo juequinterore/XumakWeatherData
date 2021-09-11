@@ -24,6 +24,18 @@ data class CityDto(
             acc
         })
 
+    companion object{
+        fun fromDomain(city: City) = CityDto(
+            geonameid = city.id, name = city.name, imageUrl = city.imageUrl.value, weather = city.weather.entries.fold(
+                mutableMapOf()){
+                acc, entry ->
+                acc[entry.key.value] = WeatherDayDto.fromDomain(entry.value)
+                acc
+            }
+
+        )
+    }
+
 }
 
 
