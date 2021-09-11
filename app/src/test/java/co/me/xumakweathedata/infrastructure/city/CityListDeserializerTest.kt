@@ -1,5 +1,6 @@
 package co.me.xumakweathedata.infrastructure.city
 
+import co.me.xumakweathedata.infrastructure.city.dtos.CityDto
 import com.google.gson.Gson
 import com.google.gson.JsonElement
 import com.google.gson.reflect.TypeToken
