@@ -48,12 +48,14 @@ android {
 }
 dependencies {
 
+    api deps.retrofit.retrofit
+    api deps.retrofit.gson_converter
+    api deps.room.room_runtime
+
     implementation deps.coroutines.core
     implementation deps.gson.gson
-    implementation deps.retrofit.retrofit
-    implementation deps.retrofit.gson_converter
-    implementation deps.room.room_runtime
     implementation deps.room.android_ktx
+
     kapt deps.room.room_compiler
 
     testImplementation deps.junit.junit
