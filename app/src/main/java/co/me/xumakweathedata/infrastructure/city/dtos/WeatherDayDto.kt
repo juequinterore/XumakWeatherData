@@ -1,4 +1,4 @@
-package co.me.xumakweathedata.infrastructure.city
+package co.me.xumakweathedata.infrastructure.city.dtos
 
 data class WeatherDayDto(
     val dayOfTheWeek: Int,
@@ -6,4 +6,6 @@ data class WeatherDayDto(
     val low: Int,
     val high: Int,
     val hourlyWeather: Map<Int, HourlyWeatherDto>
-)
+) {
+    companion object
+}
