@@ -16,6 +16,7 @@ versions.kotlin = '1.5.21'
 versions.lifecycle_runtime_ktx = '2.3.1'
 versions.material = '1.4.0'
 versions.retrofit = '2.9.0'
+versions.room = '2.3.0'
 
 ext.versions = versions
 
@@ -72,6 +73,12 @@ def retrofit = [:]
 retrofit.gson_converter = "com.squareup.retrofit2:converter-gson:$versions.retrofit"
 retrofit.retrofit = "com.squareup.retrofit2:retrofit:$versions.retrofit"
 deps.retrofit = retrofit
+
+def room = [:]
+room.android_ktx = "androidx.room:room-ktx:$versions.room"
+room.room_runtime = "androidx.room:room-runtime:$versions.room"
+room.room_compiler = "androidx.room:room-compiler:$versions.room"
+deps.room = room
 
 
 ext.deps = deps
