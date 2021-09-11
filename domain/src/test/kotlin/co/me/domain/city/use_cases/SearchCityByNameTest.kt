@@ -61,11 +61,29 @@ class SearchCityByNameTest {
     @Test
     fun `should return city from received CityRepository if city exists`() = runBlocking {
         //Arrange
+        val weather = mapOf(
+            WeekDay(0) to WeatherDay(
+                dayOfTheWeek = WeekDay(0),
+                low = 20,
+                high = 23,
+                weatherType = WeatherType.CLOUDY,
+                hourlyWeather = mapOf(
+                    DayHour(12) to HourlyWeather(
+                        hour = DayHour(12),
+                        weatherType = WeatherType.CLOUDY,
+                        temperature = 23,
+                        windSpeed = 12.2,
+                        humidity = Probability(0.6),
+                        rainChance = Probability(0.2)
+                    )
+                )
+            )
+        )
         val city = City(
             id = 111,
             name = "Medellín",
             imageUrl = XUrl("https://medellin.gov.co/image.png"),
-            weather = emptyMap()
+            weather = mapOf()
         )
 
         val mockCityRepository = FakeCityRepository(city = city, weather = weather)
@@ -76,7 +94,13 @@ class SearchCityByNameTest {
         val cityAnswer = searchCityByName(SearchCityByNameCommand("Medel"))
 
         //Assert
-        assertEquals(cityAnswer, city)
+        val expectedCity = City(
+            id = 111,
+            name = "Medellín",
+            imageUrl = XUrl("https://medellin.gov.co/image.png"),
+            weather = weather
+        )
+        assertEquals(cityAnswer, expectedCity)
 
     }
 

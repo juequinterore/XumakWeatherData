@@ -14,7 +14,7 @@ val domainModule = module {
     }
 
     single<ISearchCityByName> {
-        SearchCityByName(cityRepository = get())
+        SearchCityByName(cityRepository = get(), getCityWeather = get())
     }
 
 }

@@ -8,9 +8,20 @@ data class SearchCityByNameCommand(val name: String)
 
 interface ISearchCityByName : IQueryUseCase<SearchCityByNameCommand, City?>
 
-class SearchCityByName(private val cityRepository: ICityRepository) : ISearchCityByName {
+class SearchCityByName(
+    private val cityRepository: ICityRepository,
+    private val getCityWeather: IGetCityWeather
+) : ISearchCityByName {
 
-    override suspend fun invoke(command: SearchCityByNameCommand): City? =
-        cityRepository.searchCityByName(command.name)
+    override suspend fun invoke(command: SearchCityByNameCommand): City? {
+        val city = cityRepository.searchCityByName(command.name)
+
+        city?.let {
+            val cityWeather = getCityWeather(GetCityWeatherCommand(it.id))
+            it.weather = cityWeather
+        }
+
+        return city
+    }
 
 }
