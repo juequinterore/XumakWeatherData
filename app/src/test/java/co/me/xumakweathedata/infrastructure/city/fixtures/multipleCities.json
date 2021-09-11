@@ -1,0 +1,192 @@
+{
+  "cities": [
+    {
+      "population": 13213,
+      "admin3 code": null,
+      "geonameid": 4053050,
+      "modification date": "3/9/17",
+      "longitude": -86.7536,
+      "name": "Calera",
+      "dem": 156,
+      "feature code": "PPL",
+      "timezone": "America/Chicago",
+      "feature class": "P",
+      "asciiname": "Calera",
+      "cc2": "",
+      "admin4 code": "",
+      "latitude": 33.1029,
+      "admin2 code": 117,
+      "alternatenames": "Buxahatchie,Calera,Kalera,Lime Kiln,Lime Plant,Lime Station,ka lai la,kalra,kalyra,kyalera,ÐšÐ°Ð»ÐµÑ€Ð°,ÙƒØ§Ù„ÙŠØ±Ø§,Ú©Ø§Ù„Ø±Ø§,à¤•à¥à¤¯à¤¾à¤²à¥‡à¤°à¤¾,å¡èŽ±æ‹‰",
+      "admin1 code": "AL",
+      "imageURLs": {
+        "androidImageURLs": {
+          "mdpiImageURL": "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/mdpi/img_austin.png",
+          "xhdpiImageURL": "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/xhdpi/img_austin.png",
+          "hdpiImageURL": "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/hdpi/img_austin.png"
+        },
+        "iOSImageURLs": {
+          "imageURL": "https://candidate-exam-resources.s3.amazonaws.com/Images/iOS_City_Images/img_austin@2x.png"
+        }
+      },
+      "elevation": 154,
+      "country code": "US"
+    },
+    {
+      "population": 12059,
+      "admin3 code": null,
+      "geonameid": 4054852,
+      "modification date": "3/9/17",
+      "longitude": -86.63026,
+      "name": "Chelsea",
+      "dem": 157,
+      "feature code": "PPL",
+      "feature class": "P",
+      "timezone": "America/Chicago",
+      "asciiname": "Chelsea",
+      "cc2": "",
+      "admin4 code": "",
+      "latitude": 33.34011,
+      "admin2 code": 117,
+      "alternatenames": "Chelsi,celsi,chelsi,chlsy  alabama,qie er xi,tshylsya,Ð§ÐµÐ»ÑÐ¸,Ð§ÐµÐ»ÑÑ–,ØªØ´ÙŠÙ„Ø³ÙŠØ§,Ú†Ù„Ø³ÛŒØŒ Ø¢Ù„Ø§Ø¨Ø§Ù…Ø§,Ú†ÛŽÙ„Ø³ÛŒØŒ Ø¦Û•Ù„Ø§Ø¨Ø§Ù…Ø§,à¤šà¥‡à¤²à¥à¤¸à¥€,åˆ‡å°”è¥¿,ì²¼ì‹œ",
+      "imageURLs": {
+        "androidImageURLs": {
+          "xhdpiImageURL": "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/xhdpi/img_dallas.png",
+          "mdpiImageURL": "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/mdpi/img_dallas.png",
+          "hdpiImageURL": "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/hdpi/img_dallas.png"
+        },
+        "iOSImageURLs": {
+          "imageURL": "https://candidate-exam-resources.s3.amazonaws.com/Images/iOS_City_Images/img_dallas@2x.png"
+        }
+      },
+      "admin1 code": "AL",
+      "elevation": 156,
+      "country code": "US"
+    },
+    {
+      "population": 212461,
+      "admin3 code": null,
+      "geonameid": 4049979,
+      "modification date": "3/9/17",
+      "longitude": -86.80249,
+      "name": "Birmingham",
+      "dem": 187,
+      "feature code": "PPLA2",
+      "timezone": "America/Chicago",
+      "feature class": "P",
+      "asciiname": "Birmingham",
+      "cc2": "",
+      "admin4 code": "",
+      "latitude": 33.52066,
+      "admin2 code": 73,
+      "alternatenames": "BHM,Bermincham,Bermingkham,Birmingam,Birmingamas,Birmingem,Birmingema,Birmingham,Birmingham i Alabama,Birminhem,Gorad Birmingem,baminguhamu,baminhamu,barmingahema,barmingahyama,beominghaem,birmingemi,bo ming han,brmnghham,brmyngm  alabama,parminkam,ÎœÏ€Î­ÏÎ¼Î¹Î³Ï‡Î±Î¼,Ð‘ÐµÑ€Ð¼Ð¸Ð½Ð³Ñ…Ð°Ð¼,Ð‘Ð¸Ñ€Ð¼Ð¸Ð½Ð³Ð°Ð¼,Ð‘Ð¸Ñ€Ð¼Ð¸Ð½Ð³ÐµÐ¼,Ð‘Ñ–Ñ€Ð¼Ñ–Ð½Ð³ÐµÐ¼,Ð“Ð¾Ñ€Ð°Ð´ Ð‘Ñ–Ñ€Ð¼Ñ–Ð½Ð³ÐµÐ¼,×‘×¨×ž×™×&nbsp;×’×”××,Ø¨Ø±Ù…Ù†ØºÙ‡Ø§Ù…,Ø¨Ø±Ù…Ù†Ú¯Ú¾Ù…ØŒ Ø§Ù„Ø§Ø¨Ø§Ù…Ø§,Ø¨Ø±Ù…ÛŒÙ†Ú¯Ù…ØŒ Ø¢Ù„Ø§Ø¨Ø§Ù…Ø§,à¤¬à¤°à¥à¤®à¤¿à¤‚à¤—à¤¹à¥…à¤®,à¤¬à¤°à¥à¤®à¤¿à¤™à¥à¤—à¤¹à¥à¤¯à¤¾à¤®,à®ªà®°à¯à®®à®¿à®™à¯à®•à®¾à®®à¯,à½¢à¾¦à½²à½¢à¼‹à½˜à½²à½„à¼‹à½§à½˜à¼,áƒ‘áƒ˜áƒ&nbsp;áƒ›áƒ˜áƒœáƒ’áƒ”áƒ›áƒ˜,ãƒãƒ¼ãƒŸãƒ³ã‚°ãƒãƒ&nbsp;,ãƒãƒ¼ãƒŸãƒ³ãƒãƒ&nbsp;,ä¼¯æ˜Žç¿°,ë²„ë°í–„",
+      "imageURLs": {
+        "androidImageURLs": {
+          "mdpiImageURL": "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/mdpi/img_austin.png",
+          "xhdpiImageURL": "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/xhdpi/img_austin.png",
+          "hdpiImageURL": "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/hdpi/img_austin.png"
+        },
+        "iOSImageURLs": {
+          "imageURL": "https://candidate-exam-resources.s3.amazonaws.com/Images/iOS_City_Images/img_austin@2x.png"
+        }
+      },
+      "admin1 code": "AL",
+      "elevation": 187,
+      "country code": "US"
+    },
+    {
+      "population": 5046,
+      "admin3 code": null,
+      "geonameid": 4055045,
+      "modification date": "3/9/17",
+      "longitude": -86.35498,
+      "name": "Childersburg",
+      "dem": 130,
+      "feature code": "PPL",
+      "feature class": "P",
+      "timezone": "America/Chicago",
+      "asciiname": "Childersburg",
+      "cc2": "",
+      "admin4 code": "",
+      "latitude": 33.27817,
+      "admin2 code": 121,
+      "alternatenames": "Childersberg,Childersburg,Childersburgh,ca'ildarsabarga,chai er de si bao,childeoseubeogeu,chyldrzbrg  alabama,tshyldrsbwrgh,Ð§Ð¸Ð»Ð´ÐµÑ€ÑÐ±ÐµÑ€Ð³,ØªØ´ÙŠÙ„Ø¯Ø±Ø³Ø¨ÙˆØ±Øº,Ú†ÛŒÙ„Ø¯Ø±Ø²Ø¨Ø±Ú¯ØŒ Ø¢Ù„Ø§Ø¨Ø§Ù…Ø§,Ú†ÛŒÙ„Ø¯Û•Ø±Ø²Ø¨ÙˆØ±Ú¯ØŒ Ø¦Û•Ù„Ø§Ø¨Ø§Ù…Ø§,à¤šà¤¾à¤‡à¤²à¥à¤¡à¤°à¥à¤¸à¤¬à¤°à¥à¤—,æŸ´å°”å¾·æ–¯å&nbsp;¡,ì¹&nbsp;ë”ìŠ¤ë²„ê·¸",
+      "admin1 code": "AL",
+      "imageURLs": {
+        "androidImageURLs": {
+          "xhdpiImageURL": "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/xhdpi/img_sanfranisco.png",
+          "mdpiImageURL": "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/mdpi/img_sanfranisco.png",
+          "hdpiImageURL": "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/hdpi/img_sanfranisco.png"
+        },
+        "iOSImageURLs": {
+          "imageURL": "https://candidate-exam-resources.s3.amazonaws.com/Images/iOS_City_Images/img_sanfranisco@2x.png"
+        }
+      },
+      "elevation": 128,
+      "country code": "US"
+    },
+    {
+      "population": 6261,
+      "admin3 code": null,
+      "geonameid": 4048888,
+      "modification date": "5/14/11",
+      "longitude": -93.61323,
+      "name": "Red Chute",
+      "dem": 67,
+      "feature code": "PPL",
+      "timezone": "America/Chicago",
+      "feature class": "P",
+      "asciiname": "Red Chute",
+      "cc2": "",
+      "admin4 code": "",
+      "latitude": 32.55598,
+      "admin2 code": 15,
+      "alternatenames": "",
+      "imageURLs": {
+        "androidImageURLs": {
+          "xhdpiImageURL": "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/xhdpi/img_dallas.png",
+          "mdpiImageURL": "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/mdpi/img_dallas.png",
+          "hdpiImageURL": "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/hdpi/img_dallas.png"
+        },
+        "iOSImageURLs": {
+          "imageURL": "https://candidate-exam-resources.s3.amazonaws.com/Images/iOS_City_Images/img_dallas@2x.png"
+        }
+      },
+      "admin1 code": "LA",
+      "elevation": 65,
+      "country code": "US"
+    },
+    {
+      "population": 5954,
+      "admin3 code": null,
+      "geonameid": 4054996,
+      "modification date": "3/9/17",
+      "longitude": -88.07472,
+      "name": "Chickasaw",
+      "dem": 14,
+      "feature code": "PPL",
+      "timezone": "America/Chicago",
+      "feature class": "P",
+      "asciiname": "Chickasaw",
+      "cc2": "",
+      "admin4 code": "",
+      "latitude": 30.7638,
+      "admin2 code": 97,
+      "alternatenames": "Chikaso,chykasa  alabama,cikasah,qi ka suo,tshykasw,Ð§Ð¸ÐºÐ°ÑÐ¾,ØªØ´ÙŠÙƒØ§Ø³Ùˆ,Ú†ÛŒÚ©Ø§Ø³Ø§ØŒ Ø¢Ù„Ø§Ø¨Ø§Ù…Ø§,Ú†ÛŒÚ©Ø§Ø³Û†ØŒ Ø¦Û•Ù„Ø§Ø¨Ø§Ù…Ø§,à¤šà¤¿à¤•à¤¾à¤¸à¤ƒ,å¥‘å¡ç´¢",
+      "imageURLs": {
+        "androidImageURLs": {
+          "mdpiImageURL": "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/mdpi/img_austin.png",
+          "xhdpiImageURL": "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/xhdpi/img_austin.png",
+          "hdpiImageURL": "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/hdpi/img_austin.png"
+        },
+        "iOSImageURLs": {
+          "imageURL": "https://candidate-exam-resources.s3.amazonaws.com/Images/iOS_City_Images/img_austin@2x.png"
+        }
+      },
+      "admin1 code": "AL",
+      "elevation": 10,
+      "country code": "US"
+    }
+  ],
+  "startIndex": 0,
+  "totalCitiesFound": 6
+}
