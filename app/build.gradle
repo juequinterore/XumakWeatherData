@@ -19,6 +19,14 @@ android {
         }
     }
 
+    flavorDimensions "version"
+
+    productFlavors {
+        staging {
+            buildConfigField("String", "API_URL", '"https://weather.exam.bottlerocketservices.com/"')
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -51,6 +59,7 @@ dependencies {
     implementation deps.compose.compose_ui_tooling_preview
     implementation deps.androidx.lifecycle_runtime_ktx
     implementation deps.androidx.activity_compose
+    implementation deps.koin.android
 
     testImplementation deps.junit.junit
     androidTestImplementation deps.androidx.android_junit_ext
@@ -58,6 +67,7 @@ dependencies {
     androidTestImplementation deps.compose.ui_test_junit4
     debugImplementation deps.compose.ui_tooling
 
+    implementation project(':di')
     implementation project(':domain')
     implementation project(':infrastructure')
 }
