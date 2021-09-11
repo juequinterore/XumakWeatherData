@@ -22,5 +22,14 @@ data class HourlyWeatherDto(
         temperature = temperature
     )
 
-    companion object
+    companion object {
+        fun fromDomain(hourlyWeather: HourlyWeather) = HourlyWeatherDto(
+            rainChance = hourlyWeather.rainChance.value,
+            hour = hourlyWeather.hour.value,
+            humidity = hourlyWeather.humidity.value,
+            weatherType = hourlyWeather.weatherType.value,
+            windSpeed = hourlyWeather.windSpeed,
+            temperature = hourlyWeather.temperature
+        )
+    }
 }
