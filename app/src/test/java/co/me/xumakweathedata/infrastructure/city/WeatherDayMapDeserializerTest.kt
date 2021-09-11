@@ -48,7 +48,7 @@ class WeatherDayMapDeserializerTest {
                         temperature = 94,
                         hour = 2,
                         humidity = 0.1,
-                        windSpeed = 6
+                        windSpeed = 6.0
                     ),
                     14 to HourlyWeatherDto(
                         weatherType = "sunny",
@@ -56,7 +56,7 @@ class WeatherDayMapDeserializerTest {
                         temperature = 108,
                         hour = 14,
                         humidity = 0.1,
-                        windSpeed = 6
+                        windSpeed = 6.0
                     ),
                     15 to HourlyWeatherDto(
                         weatherType = "sunny",
@@ -64,7 +64,7 @@ class WeatherDayMapDeserializerTest {
                         temperature = 109,
                         hour = 15,
                         humidity = 0.1,
-                        windSpeed = 6
+                        windSpeed = 6.0
                     )
                 )
             ),
@@ -80,7 +80,7 @@ class WeatherDayMapDeserializerTest {
                         temperature = 104,
                         hour = 0,
                         humidity = 0.1,
-                        windSpeed = 6
+                        windSpeed = 6.0
                     ),
                     7 to HourlyWeatherDto(
                         weatherType = "sunny",
@@ -88,7 +88,7 @@ class WeatherDayMapDeserializerTest {
                         temperature = 98,
                         hour = 7,
                         humidity = 0.1,
-                        windSpeed = 6
+                        windSpeed = 6.0
                     ),
                     23 to HourlyWeatherDto(
                         weatherType = "sunny",
@@ -96,7 +96,7 @@ class WeatherDayMapDeserializerTest {
                         temperature = 109,
                         hour = 23,
                         humidity = 0.1,
-                        windSpeed = 6
+                        windSpeed = 6.0
                     )
                 )
             )
