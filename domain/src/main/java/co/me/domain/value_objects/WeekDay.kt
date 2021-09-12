@@ -7,4 +7,15 @@ value class WeekDay(val value: Int) {
             "$value is not a valid week day. Must be between [0, 6]"
         }
     }
+
+    fun toShortName(): String = when (value) {
+        0 -> "Mon"
+        1 -> "Tue"
+        2 -> "Wed"
+        3 -> "Thu"
+        4 -> "Fri"
+        5 -> "Sat"
+        else -> "Sun"
+    }
+    
 }

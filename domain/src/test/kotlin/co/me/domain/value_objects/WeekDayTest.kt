@@ -31,4 +31,22 @@ class WeekDayTest {
         val weekDay = WeekDay(6)
         assertEquals(weekDay.value, 6)
     }
+
+    @Test
+    fun `should return proper short name per each WeekDay`() {
+        val map = mapOf(
+            WeekDay(0) to "Mon",
+            WeekDay(1) to "Tue",
+            WeekDay(2) to "Wed",
+            WeekDay(3) to "Thu",
+            WeekDay(4) to "Fri",
+            WeekDay(5) to "Sat",
+            WeekDay(6) to "Sun",
+        )
+
+        map.entries.onEach {
+            assertEquals(it.key.toShortName(), it.value)
+        }
+    }
+
 }
