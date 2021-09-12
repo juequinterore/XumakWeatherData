@@ -15,7 +15,9 @@ import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -397,6 +399,14 @@ fun MainContent() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .weight(3f)
+                    .background(
+                        Brush.verticalGradient(
+                            colors = listOf(
+                                colorResource(id = R.color.main_gradient_start),
+                                colorResource(id = R.color.main_gradient_end)
+                            )
+                        )
+                    )
             ) {
                 Column(
                     modifier = Modifier
