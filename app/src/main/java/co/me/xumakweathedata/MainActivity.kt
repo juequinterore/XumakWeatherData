@@ -36,6 +36,7 @@ import com.skydoves.landscapist.glide.GlideImage
 import org.koin.android.ext.android.inject
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import com.skydoves.landscapist.CircularReveal
 
 class MainActivity : ComponentActivity() {
 
@@ -130,6 +131,7 @@ fun ColumnScope.TopSection(city: City?, currentDateText: String, currentDayNumbe
         GlideImage(
             imageModel = city?.imageUrl?.value ?: "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/xhdpi/img_dallas.png",
             contentScale = ContentScale.Crop,
+            circularReveal = CircularReveal(duration = 250),
             requestOptions = RequestOptions().centerCrop(),
             modifier = Modifier.alpha(0.9f)
         )
