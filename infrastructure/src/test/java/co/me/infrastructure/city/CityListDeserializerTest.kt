@@ -36,6 +36,7 @@ class CityListDeserializerTest {
             CityDto(
                 geonameid = 4053050,
                 name = "Calera",
+                adminCode1 = "AL",
                 imageUrl = "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/xhdpi/img_austin.png",
                 weather = emptyMap()
             ),
@@ -43,6 +44,7 @@ class CityListDeserializerTest {
             CityDto(
                 geonameid = 4054852,
                 name = "Chelsea",
+                adminCode1 = "AL",
                 imageUrl = "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/xhdpi/img_dallas.png",
                 weather = emptyMap()
             ),
@@ -50,6 +52,7 @@ class CityListDeserializerTest {
             CityDto(
                 geonameid = 4049979,
                 name = "Birmingham",
+                adminCode1 = "AL",
                 imageUrl = "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/xhdpi/img_austin.png",
                 weather = emptyMap()
             ),
@@ -57,6 +60,7 @@ class CityListDeserializerTest {
             CityDto(
                 geonameid = 4055045,
                 name = "Childersburg",
+                adminCode1 = "AL",
                 imageUrl = "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/xhdpi/img_sanfranisco.png",
                 weather = emptyMap()
             ),
@@ -64,6 +68,7 @@ class CityListDeserializerTest {
             CityDto(
                 geonameid = 4048888,
                 name = "Red Chute",
+                adminCode1 = "LA",
                 imageUrl = "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/xhdpi/img_dallas.png",
                 weather = emptyMap()
             ),
@@ -71,6 +76,7 @@ class CityListDeserializerTest {
             CityDto(
                 geonameid = 4054996,
                 name = "Chickasaw",
+                adminCode1 = "AL",
                 imageUrl = "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/xhdpi/img_austin.png",
                 weather = emptyMap()
             )

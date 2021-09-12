@@ -80,6 +80,7 @@ class CityTest {
         val city = City(
             id = 45150,
             name = "Medellín",
+            adminCode1 = "Antioquia",
             imageUrl = XUrl("https://medellin.gov.co/image.png"),
             weather = weatherDays
         )
@@ -133,6 +134,7 @@ class CityTest {
         val city = City(
             id = 45150,
             name = "Medellín",
+            adminCode1 = "Antioquia",
             imageUrl = XUrl("https://medellin.gov.co/image.png"),
             weather = weatherDays
         )

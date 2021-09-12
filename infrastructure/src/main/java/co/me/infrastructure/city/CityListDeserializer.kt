@@ -20,6 +20,7 @@ class CityListDeserializer : JsonDeserializer<List<CityDto>> {
             val cityJson = it.asJsonObject
             val geonameid = cityJson?.get("geonameid")?.asInt
             val name = cityJson?.get("name")?.asString
+            val adminCode1 = cityJson?.get("admin1 code")?.asString
             val imageURLs = cityJson?.get("imageURLs")?.asJsonObject
             val androidImageURLs = imageURLs?.get("androidImageURLs")?.asJsonObject
             val imageUrl = androidImageURLs?.get("xhdpiImageURL")?.asString
@@ -28,6 +29,7 @@ class CityListDeserializer : JsonDeserializer<List<CityDto>> {
                 geonameid = geonameid!!,
                 name = name!!,
                 imageUrl = imageUrl!!,
+                adminCode1 = adminCode1!!,
                 weather = mapOf()
             )
         }

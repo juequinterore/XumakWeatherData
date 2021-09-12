@@ -103,6 +103,7 @@ class CityRepositoryTest {
             geonameid = 20001201,
             name = "Medellín",
             imageUrl = "https://myImage.co/image.jpg",
+            adminCode1 = "Antioquia",
             weather = mapOf()
         )
         val cityRepository = createCityRepository(searchCity = fakeCityDto)
@@ -301,12 +302,14 @@ class CityRepositoryTest {
         val fakeCityDto = CityDto(
             geonameid = 20001201,
             name = "Medellín",
+            adminCode1 = "Antioquia",
             imageUrl = "https://myImage.co/image.jpg",
             weather = mapOf()
         )
         val fakeCityDto2 = CityDto(
             geonameid = 2111221,
             name = "Bogotá",
+            adminCode1 = "Cundinamarca",
             imageUrl = "https://myImage.co/image2.jpg",
             weather = mapOf()
         )

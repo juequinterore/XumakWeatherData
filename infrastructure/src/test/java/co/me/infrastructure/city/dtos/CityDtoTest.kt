@@ -14,6 +14,7 @@ class CityDtoTest {
         val cityDto = CityDto(
             geonameid = 1234,
             name = "Medellín",
+            adminCode1 = "Antioquia",
             imageUrl = "https://medellin.co/image.png",
             weather = mapOf(
                 6 to WeatherDayDto(
@@ -43,6 +44,7 @@ class CityDtoTest {
         val expectedCity = City(
             id = 1234,
             name = "Medellín",
+            adminCode1 = "Antioquia",
             imageUrl = XUrl("https://medellin.co/image.png"),
             weather = mapOf(
                 WeekDay(6) to WeatherDay(

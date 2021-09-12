@@ -38,12 +38,14 @@ class GetAllCitiesTest {
             City(
                 id = 111,
                 name = "Medellín",
+                adminCode1 = "Antioquia",
                 imageUrl = XUrl("https://medellin.gov.co/image.png"),
                 weather = emptyMap()
             ),
             City(
                 id = 112,
                 name = "Brisbane",
+                adminCode1 = "Queensland",
                 imageUrl = XUrl("https://brisbane.gov.co/image.png"),
                 weather = emptyMap()
             )

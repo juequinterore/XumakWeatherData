@@ -82,6 +82,7 @@ class SearchCityByNameTest {
         val city = City(
             id = 111,
             name = "Medellín",
+            adminCode1 = "Antioquia",
             imageUrl = XUrl("https://medellin.gov.co/image.png"),
             weather = mapOf()
         )
@@ -97,6 +98,7 @@ class SearchCityByNameTest {
         val expectedCity = City(
             id = 111,
             name = "Medellín",
+            adminCode1 = "Antioquia",
             imageUrl = XUrl("https://medellin.gov.co/image.png"),
             weather = weather
         )
