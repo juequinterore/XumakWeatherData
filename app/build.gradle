@@ -60,6 +60,7 @@ dependencies {
     implementation deps.compose.livedata
     implementation deps.androidx.lifecycle_runtime_ktx
     implementation deps.androidx.activity_compose
+    implementation deps.androidx.compose_navigation
     implementation deps.koin.android
     implementation deps.landscapist.glide
 
