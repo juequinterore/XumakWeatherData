@@ -2,6 +2,7 @@ package co.me.xumakweathedata
 
 import android.os.Bundle
 import android.util.Log
+import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -15,8 +16,11 @@ import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -28,6 +32,8 @@ import androidx.compose.ui.unit.sp
 import co.me.domain.value_objects.*
 import co.me.xumakweathedata.extensions.toIcon
 import co.me.xumakweathedata.ui.theme.XumakWeatheDataTheme
+import com.bumptech.glide.request.RequestOptions
+import com.skydoves.landscapist.glide.GlideImage
 import org.koin.android.ext.android.inject
 
 val hourlyWeatherMap = mapOf(
@@ -312,12 +318,14 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         subscribeToLiveData()
-
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+        )
         setContent {
             XumakWeatheDataTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-//                    Greeting("Android")
                     MainContent()
                 }
             }
@@ -335,88 +343,124 @@ class MainActivity : ComponentActivity() {
 @Preview
 @Composable
 fun MainContent() {
-    Box(
-        modifier = Modifier
-            .fillMaxHeight()
-            .fillMaxWidth()
-            .background(Color.Black)
-    ) {
-//        GlideImage(
-//            imageModel = "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/xhdpi/img_dallas.png",
-//            contentScale = ContentScale.Crop
-//        )
+    Box{
         Column(
             modifier = Modifier
                 .fillMaxWidth()
         ) {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .weight(2f),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Top
-            ) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    IconButton(onClick = { println("CLICK") }) {
-                        Icon(
-                            imageVector = Icons.Filled.Search,
-                            contentDescription = "Search Button",
-                            tint = Color.White
-                        )
-                    }
-                    Row {
-                        IconButton(onClick = { println("Click Delete") }) {
-                            Icon(
-                                imageVector = Icons.Filled.Delete,
-                                contentDescription = "Delete Button",
-                                tint = Color.White
-                            )
-                        }
-                        IconButton(onClick = { println("Click Radar") }) {
-                            Icon(
-                                imageVector = Icons.Filled.Call,
-                                contentDescription = "Radar Button",
-                                tint = Color.White
-                            )
-                        }
-                    }
-                }
+            TopSection()
+            BottomSection()
+        }
+    }
+}
 
-                Column(
-                    modifier = Modifier
-                        .fillMaxHeight(), verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Text(text = "Dallas, TX", fontSize = 15.sp, color = Color.White)
-                    Text(text = "Mon 4/21/18  11:58 PM", fontSize = 15.sp, color = Color.White)
-                    Text(text = "75°", fontSize = 40.sp, color = Color.White)
-                }
-            }
-            Box(
-                modifier = Modifier
+@ExperimentalFoundationApi
+@Composable
+fun ColumnScope.BottomSection() {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .weight(4f)
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight()
+                .background(
+                    Brush.verticalGradient(
+                        colors = listOf(
+                            colorResource(id = R.color.main_gradient_start),
+                            colorResource(id = R.color.main_gradient_end)
+                        )
+                    )
+                )
+        ) {
+            WeekRow(weight = 1f, weatherDaysMap = weatherDays)
+            Divider(color = Color.White, thickness = 1.dp)
+            Box(modifier =  Modifier.weight(3f), contentAlignment = Alignment.BottomCenter){
+                HourlyWeatherListColumn()
+                Box(modifier = Modifier
                     .fillMaxWidth()
-                    .weight(3f)
+                    .fillMaxHeight(0.35f)
                     .background(
                         Brush.verticalGradient(
                             colors = listOf(
-                                colorResource(id = R.color.main_gradient_start),
+                                Color.Transparent,
                                 colorResource(id = R.color.main_gradient_end)
-                            )
+                            ),
                         )
                     )
-            ) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .fillMaxHeight()
-                ) {
-                    WeekRow(weight = 1f, weatherDaysMap = weatherDays)
-                    Divider(color = Color.White, thickness = 1.dp)
-                    HourlyWeatherListColumn(3f)
-                }
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun ColumnScope.TopSection() {
+    Box(modifier = Modifier
+        .fillMaxWidth()
+        .fillMaxHeight()
+        .weight(3f)
+        .background(colorResource(id = R.color.main_gradient_start))) {
+        GlideImage(
+            imageModel = "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/xhdpi/img_dallas.png",
+            contentScale = ContentScale.Crop,
+            requestOptions = RequestOptions().centerCrop(),
+            modifier = Modifier.alpha(0.9f)
+        )
+        Box{
+            Topbar()
+            TopSectionCityInfo()
+        }
+
+    }
+}
+
+@Composable
+fun TopSectionCityInfo() {
+    Column(
+        modifier = Modifier
+            .fillMaxHeight()
+            .fillMaxWidth(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(text = "Dallas, TX", fontSize = 16.sp, color = Color.White, fontWeight = FontWeight.Bold)
+        Spacer(modifier = Modifier.height(8.dp))
+        Text(text = "Mon 4/21/18  11:58 PM", fontSize = 15.sp, color = Color.White)
+        Spacer(modifier = Modifier.height(8.dp))
+        Text(text = "75°", fontSize = 40.sp, color = Color.White)
+    }
+}
+
+@Composable
+fun Topbar() {
+    Row(
+        modifier = Modifier.fillMaxWidth().padding(top = 30.dp),
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        IconButton(onClick = { println("CLICK") }) {
+            Icon(
+                imageVector = Icons.Filled.Search,
+                contentDescription = "Search Button",
+                tint = Color.White
+            )
+        }
+        Row {
+            IconButton(onClick = { println("Click Delete") }) {
+                Icon(
+                    imageVector = Icons.Filled.Delete,
+                    contentDescription = "Delete Button",
+                    tint = Color.White
+                )
+            }
+            IconButton(onClick = { println("Click Radar") }) {
+                Icon(
+                    imageVector = Icons.Filled.Call,
+                    contentDescription = "Radar Button",
+                    tint = Color.White
+                )
             }
         }
     }
@@ -424,10 +468,9 @@ fun MainContent() {
 
 @ExperimentalFoundationApi
 @Composable
-fun ColumnScope.HourlyWeatherListColumn(weight: Float) {
+fun HourlyWeatherListColumn() {
     Column(
         modifier = Modifier
-            .weight(weight)
             .fillMaxWidth()
             .fillMaxHeight()
     ) {
