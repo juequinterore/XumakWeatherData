@@ -44,6 +44,7 @@ def compose = [:]
 compose.compose_material = "androidx.compose.material:material:$versions.compose"
 compose.compose_ui = "androidx.compose.ui:ui:$versions.compose"
 compose.compose_ui_tooling_preview = "androidx.compose.ui:ui-tooling-preview:$versions.compose"
+compose.livedata = "androidx.compose.runtime:runtime-livedata:$versions.compose"
 compose.ui_test_junit4 = "androidx.compose.ui:ui-test-junit4:$versions.compose"
 compose.ui_tooling = "androidx.compose.ui:ui-tooling:$versions.compose"
 deps.compose = compose
