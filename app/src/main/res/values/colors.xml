@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="main_gradient_start">#B4B9C0</color>
     <color name="main_gradient_end">#84A1CA</color>
+    <color name="inactive_week_day">#697995</color>
 </resources>
