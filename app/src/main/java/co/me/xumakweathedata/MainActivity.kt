@@ -17,7 +17,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -25,288 +24,18 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.ExperimentalUnitApi
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import co.me.domain.entities.City
 import co.me.domain.value_objects.*
 import co.me.xumakweathedata.extensions.toIcon
 import co.me.xumakweathedata.ui.theme.XumakWeatheDataTheme
 import com.bumptech.glide.request.RequestOptions
 import com.skydoves.landscapist.glide.GlideImage
 import org.koin.android.ext.android.inject
-
-val hourlyWeatherMap = mapOf(
-    DayHour(0) to HourlyWeather(
-        rainChance = Probability(0.2),
-        hour = DayHour(0),
-        humidity = Probability(0.15),
-        weatherType = WeatherType.CLOUDY,
-        windSpeed = 32.0,
-        temperature = 26
-    ),
-    DayHour(1) to HourlyWeather(
-        rainChance = Probability(0.2),
-        hour = DayHour(1),
-        humidity = Probability(0.15),
-        weatherType = WeatherType.CLOUDY,
-        windSpeed = 32.0,
-        temperature = 26
-    ),
-    DayHour(2) to HourlyWeather(
-        rainChance = Probability(0.2),
-        hour = DayHour(2),
-        humidity = Probability(0.15),
-        weatherType = WeatherType.SNOWSLEET,
-        windSpeed = 32.0,
-        temperature = 26
-    ),
-    DayHour(3) to HourlyWeather(
-        rainChance = Probability(0.2),
-        hour = DayHour(3),
-        humidity = Probability(0.15),
-        weatherType = WeatherType.CLOUDY,
-        windSpeed = 32.0,
-        temperature = 26
-    ),
-    DayHour(4) to HourlyWeather(
-        rainChance = Probability(0.2),
-        hour = DayHour(4),
-        humidity = Probability(0.15),
-        weatherType = WeatherType.CLOUDY,
-        windSpeed = 32.0,
-        temperature = 26
-    ),
-    DayHour(5) to HourlyWeather(
-        rainChance = Probability(0.2),
-        hour = DayHour(5),
-        humidity = Probability(0.15),
-        weatherType = WeatherType.SNOWSLEET,
-        windSpeed = 32.0,
-        temperature = 26
-    ),
-    DayHour(6) to HourlyWeather(
-        rainChance = Probability(0.2),
-        hour = DayHour(6),
-        humidity = Probability(0.15),
-        weatherType = WeatherType.CLOUDY,
-        windSpeed = 32.0,
-        temperature = 26
-    ),
-    DayHour(7) to HourlyWeather(
-        rainChance = Probability(0.2),
-        hour = DayHour(7),
-        humidity = Probability(0.15),
-        weatherType = WeatherType.CLOUDY,
-        windSpeed = 32.0,
-        temperature = 26
-    ),
-    DayHour(8) to HourlyWeather(
-        rainChance = Probability(0.2),
-        hour = DayHour(8),
-        humidity = Probability(0.15),
-        weatherType = WeatherType.SNOWSLEET,
-        windSpeed = 32.0,
-        temperature = 26
-    ),
-    DayHour(9) to HourlyWeather(
-        rainChance = Probability(0.2),
-        hour = DayHour(9),
-        humidity = Probability(0.15),
-        weatherType = WeatherType.CLOUDY,
-        windSpeed = 32.0,
-        temperature = 26
-    ),
-    DayHour(10) to HourlyWeather(
-        rainChance = Probability(0.2),
-        hour = DayHour(10),
-        humidity = Probability(0.15),
-        weatherType = WeatherType.CLOUDY,
-        windSpeed = 32.0,
-        temperature = 26
-    ),
-    DayHour(11) to HourlyWeather(
-        rainChance = Probability(0.2),
-        hour = DayHour(11),
-        humidity = Probability(0.15),
-        weatherType = WeatherType.SNOWSLEET,
-        windSpeed = 32.0,
-        temperature = 26
-    ),
-    DayHour(12) to HourlyWeather(
-        rainChance = Probability(0.2),
-        hour = DayHour(12),
-        humidity = Probability(0.15),
-        weatherType = WeatherType.SNOWSLEET,
-        windSpeed = 32.0,
-        temperature = 26
-    ),
-    DayHour(13) to HourlyWeather(
-        rainChance = Probability(0.2),
-        hour = DayHour(13),
-        humidity = Probability(0.15),
-        weatherType = WeatherType.CLOUDY,
-        windSpeed = 32.0,
-        temperature = 26
-    ),
-    DayHour(14) to HourlyWeather(
-        rainChance = Probability(0.2),
-        hour = DayHour(14),
-        humidity = Probability(0.15),
-        weatherType = WeatherType.SNOWSLEET,
-        windSpeed = 32.0,
-        temperature = 26
-    ),
-    DayHour(15) to HourlyWeather(
-        rainChance = Probability(0.2),
-        hour = DayHour(15),
-        humidity = Probability(0.15),
-        weatherType = WeatherType.CLOUDY,
-        windSpeed = 32.0,
-        temperature = 26
-    ),
-    DayHour(16) to HourlyWeather(
-        rainChance = Probability(0.2),
-        hour = DayHour(16),
-        humidity = Probability(0.15),
-        weatherType = WeatherType.CLOUDY,
-        windSpeed = 32.0,
-        temperature = 26
-    ),
-    DayHour(17) to HourlyWeather(
-        rainChance = Probability(0.2),
-        hour = DayHour(17),
-        humidity = Probability(0.15),
-        weatherType = WeatherType.SNOWSLEET,
-        windSpeed = 32.0,
-        temperature = 26
-    ),
-    DayHour(18) to HourlyWeather(
-        rainChance = Probability(0.2),
-        hour = DayHour(18),
-        humidity = Probability(0.15),
-        weatherType = WeatherType.CLOUDY,
-        windSpeed = 32.0,
-        temperature = 26
-    ),
-    DayHour(19) to HourlyWeather(
-        rainChance = Probability(0.2),
-        hour = DayHour(19),
-        humidity = Probability(0.15),
-        weatherType = WeatherType.CLOUDY,
-        windSpeed = 32.0,
-        temperature = 26
-    ),
-    DayHour(20) to HourlyWeather(
-        rainChance = Probability(0.2),
-        hour = DayHour(20),
-        humidity = Probability(0.15),
-        weatherType = WeatherType.SNOWSLEET,
-        windSpeed = 32.0,
-        temperature = 26
-    ),
-    DayHour(21) to HourlyWeather(
-        rainChance = Probability(0.2),
-        hour = DayHour(21),
-        humidity = Probability(0.15),
-        weatherType = WeatherType.CLOUDY,
-        windSpeed = 32.0,
-        temperature = 26
-    ),
-    DayHour(22) to HourlyWeather(
-        rainChance = Probability(0.2),
-        hour = DayHour(22),
-        humidity = Probability(0.15),
-        weatherType = WeatherType.CLOUDY,
-        windSpeed = 32.0,
-        temperature = 26
-    ),
-    DayHour(23) to HourlyWeather(
-        rainChance = Probability(0.2),
-        hour = DayHour(23),
-        humidity = Probability(0.15),
-        weatherType = WeatherType.SNOWSLEET,
-        windSpeed = 32.0,
-        temperature = 26
-    )
-)
-
-val weatherDays = mapOf(
-    WeekDay(0) to WeatherDay(
-        dayOfTheWeek = WeekDay(0),
-        low = 25,
-        high = 75,
-        weatherType = WeatherType.SUNNY,
-        hourlyWeather = hourlyWeatherMap
-    ),
-    WeekDay(1) to WeatherDay(
-        dayOfTheWeek = WeekDay(1),
-        low = 11,
-        high = 23,
-        weatherType = WeatherType.CLOUDY,
-        hourlyWeather = mapOf(
-            DayHour(0) to HourlyWeather(
-                rainChance = Probability(0.4),
-                hour = DayHour(0),
-                humidity = Probability(0.15),
-                weatherType = WeatherType.CLOUDY,
-                windSpeed = 32.0,
-                temperature = 26
-            ),
-            DayHour(1) to HourlyWeather(
-                rainChance = Probability(0.2),
-                hour = DayHour(1),
-                humidity = Probability(0.15),
-                weatherType = WeatherType.CLOUDY,
-                windSpeed = 32.0,
-                temperature = 26
-            ),
-            DayHour(2) to HourlyWeather(
-                rainChance = Probability(0.2),
-                hour = DayHour(2),
-                humidity = Probability(0.15),
-                weatherType = WeatherType.SUNNY,
-                windSpeed = 32.0,
-                temperature = 26
-            )
-        )
-    ),
-    WeekDay(2) to WeatherDay(
-        dayOfTheWeek = WeekDay(2),
-        low = 25,
-        high = 75,
-        weatherType = WeatherType.SNOWSLEET,
-        hourlyWeather = hourlyWeatherMap
-    ),
-    WeekDay(3) to WeatherDay(
-        dayOfTheWeek = WeekDay(3),
-        low = 25,
-        high = 75,
-        weatherType = WeatherType.HEAVYRAIN,
-        hourlyWeather = hourlyWeatherMap
-    ),
-    WeekDay(4) to WeatherDay(
-        dayOfTheWeek = WeekDay(4),
-        low = 25,
-        high = 75,
-        weatherType = WeatherType.LIGHTRAIN,
-        hourlyWeather = hourlyWeatherMap
-    ),
-    WeekDay(5) to WeatherDay(
-        dayOfTheWeek = WeekDay(5),
-        low = 25,
-        high = 75,
-        weatherType = WeatherType.PARTLYCLOUDY,
-        hourlyWeather = hourlyWeatherMap
-    ),
-    WeekDay(6) to WeatherDay(
-        dayOfTheWeek = WeekDay(6),
-        low = 25,
-        high = 75,
-        weatherType = WeatherType.SUNNY,
-        hourlyWeather = hourlyWeatherMap
-    )
-)
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 
 class MainActivity : ComponentActivity() {
 
@@ -317,7 +46,6 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        subscribeToLiveData()
         window.setFlags(
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
@@ -326,37 +54,33 @@ class MainActivity : ComponentActivity() {
             XumakWeatheDataTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    MainContent()
+                    val cities: List<City> by viewModel.allCities.observeAsState(emptyList())
+                    val currentDayNumber: Int by viewModel.currentDayNumber.observeAsState(0)
+                    val currentDateText: String by viewModel.currentDate.observeAsState("")
+                    MainContent(cities, currentDayNumber, currentDateText)
                 }
             }
-        }
-    }
-
-    private fun subscribeToLiveData() {
-        viewModel.allCities.observe(this) {
-            Log.e("PUTA", "Las ciudades son: $it")
         }
     }
 }
 
 @ExperimentalFoundationApi
-@Preview
 @Composable
-fun MainContent() {
+fun MainContent(cities: List<City>, currentDayNumber: Int, currentDateText: String) {
     Box{
         Column(
             modifier = Modifier
                 .fillMaxWidth()
         ) {
-            TopSection()
-            BottomSection()
+            TopSection(cities.firstOrNull(), currentDateText, currentDayNumber)
+            BottomSection(cities.firstOrNull(), currentDayNumber)
         }
     }
 }
 
 @ExperimentalFoundationApi
 @Composable
-fun ColumnScope.BottomSection() {
+fun ColumnScope.BottomSection(city: City?, currentDayNumber: Int) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -375,10 +99,10 @@ fun ColumnScope.BottomSection() {
                     )
                 )
         ) {
-            WeekRow(weight = 1f, weatherDaysMap = weatherDays)
-            Divider(color = Color.White, thickness = 1.dp)
+            WeekRow(weight = 1f, weatherDaysMap = city?.weather ?: mapOf(), currentDayNumber)
+            Divider(color = Color.White, thickness = (0.6).dp)
             Box(modifier =  Modifier.weight(3f), contentAlignment = Alignment.BottomCenter){
-                HourlyWeatherListColumn()
+                HourlyWeatherListColumn(city?.getWeatherForDay(WeekDay(currentDayNumber))?.hourlyWeather ?: mapOf())
                 Box(modifier = Modifier
                     .fillMaxWidth()
                     .fillMaxHeight(0.35f)
@@ -397,28 +121,28 @@ fun ColumnScope.BottomSection() {
 }
 
 @Composable
-fun ColumnScope.TopSection() {
+fun ColumnScope.TopSection(city: City?, currentDateText: String, currentDayNumber: Int) {
     Box(modifier = Modifier
         .fillMaxWidth()
         .fillMaxHeight()
         .weight(3f)
         .background(colorResource(id = R.color.main_gradient_start))) {
         GlideImage(
-            imageModel = "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/xhdpi/img_dallas.png",
+            imageModel = city?.imageUrl?.value ?: "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/xhdpi/img_dallas.png",
             contentScale = ContentScale.Crop,
             requestOptions = RequestOptions().centerCrop(),
             modifier = Modifier.alpha(0.9f)
         )
         Box{
             Topbar()
-            TopSectionCityInfo()
+            TopSectionCityInfo(city, currentDateText, currentDayNumber)
         }
 
     }
 }
 
 @Composable
-fun TopSectionCityInfo() {
+fun TopSectionCityInfo(city: City?, currentDateText: String, currentDayNumber: Int) {
     Column(
         modifier = Modifier
             .fillMaxHeight()
@@ -426,18 +150,25 @@ fun TopSectionCityInfo() {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "Dallas, TX", fontSize = 16.sp, color = Color.White, fontWeight = FontWeight.Bold)
+        Text(
+            text = city?.fullName ?: "",
+            fontSize = 16.sp,
+            color = Color.White,
+            fontWeight = FontWeight.Bold
+        )
         Spacer(modifier = Modifier.height(8.dp))
-        Text(text = "Mon 4/21/18  11:58 PM", fontSize = 15.sp, color = Color.White)
+        Text(text = currentDateText, fontSize = 15.sp, color = Color.White)
         Spacer(modifier = Modifier.height(8.dp))
-        Text(text = "75°", fontSize = 40.sp, color = Color.White)
+        Text(text = "${city?.weather?.get(WeekDay(currentDayNumber))?.high ?: 0}°", fontSize = 40.sp, color = Color.White)
     }
 }
 
 @Composable
 fun Topbar() {
     Row(
-        modifier = Modifier.fillMaxWidth().padding(top = 30.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 30.dp),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         IconButton(onClick = { println("CLICK") }) {
@@ -468,18 +199,19 @@ fun Topbar() {
 
 @ExperimentalFoundationApi
 @Composable
-fun HourlyWeatherListColumn() {
+fun HourlyWeatherListColumn(hourlyWeatherMap: Map<DayHour, HourlyWeather>) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .fillMaxHeight()
+            .padding(bottom = 35.dp)
     ) {
         HourlyWeatherList(hourlyWeatherMap)
     }
 }
 
 @Composable
-fun ColumnScope.WeekRow(weight: Float, weatherDaysMap: Map<WeekDay, WeatherDay>) {
+fun ColumnScope.WeekRow(weight: Float, weatherDaysMap: Map<WeekDay, WeatherDay>, currentDayNumber: Int) {
     val weatherDaysList = weatherDaysMap.entries.sortedBy { it.key.value }.map { it.value }
 
     Row(
@@ -491,26 +223,27 @@ fun ColumnScope.WeekRow(weight: Float, weatherDaysMap: Map<WeekDay, WeatherDay>)
         horizontalArrangement = Arrangement.SpaceEvenly,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        weatherDaysList.forEach {
-            DayWeather(it)
+        weatherDaysList.forEachIndexed {index, it ->
+            DayWeather(weatherDay = it, isActive = index == currentDayNumber)
         }
     }
 }
 
 @Composable
-fun DayWeather(weatherDay: WeatherDay) {
+fun DayWeather(weatherDay: WeatherDay, isActive: Boolean) {
     Column(horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxHeight()) {
+        val color = if(isActive) Color.White else colorResource(id = R.color.inactive_week_day)
         Text(weatherDay.dayOfTheWeek.toShortName(),
-            color = Color.White)
+            color = color)
         Icon(
             painter = painterResource(weatherDay.weatherType.toIcon()),
             contentDescription = "Day",
-            tint = Color.White,
+            tint = color,
             modifier = Modifier.size(20.dp)
         )
         Text("${weatherDay.high}°",
-            color = Color.White)
+            color = color)
     }
 }
 
