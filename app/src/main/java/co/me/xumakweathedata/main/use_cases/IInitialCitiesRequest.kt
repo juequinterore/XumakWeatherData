@@ -25,7 +25,7 @@ class InitialCitiesCitiesRequest(
     }
 
     private suspend fun requestDefaultCity() {
-        val city = searchCityByName(SearchCityByNameCommand("Trinity"))
+        val city = searchCityByName(SearchCityByNameCommand("Calera"))
         city?.let {
             citiesRepository.insert(it)
         }
