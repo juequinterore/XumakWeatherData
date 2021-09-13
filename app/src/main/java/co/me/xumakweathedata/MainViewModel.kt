@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import co.me.domain.city.use_cases.IGetAllCities
-import co.me.domain.entities.City
 import co.me.xumakweathedata.main.use_cases.GetCurrentDayCommand
 import co.me.xumakweathedata.main.use_cases.IGetCurrentDayNumber
 import co.me.xumakweathedata.main.use_cases.IInitialCitiesRequest
@@ -21,9 +20,15 @@ class MainViewModel(
     private val getAllCities: IGetAllCities,
 ) : ViewModel() {
 
-    private val _allCities = MutableLiveData<List<City>>()
-    private val _currentDate = MutableLiveData<String>()
-    private val _currentDayNumber = MutableLiveData<Int>()
+    private val _stateLiveData = MutableLiveData<MainActivityState>()
+
+    private var _state =
+        MainActivityState(cities = emptyList(), currentDayNumber = 0, currentDateText = dateText)
+        set(value) {
+            field = value
+            _stateLiveData.postValue(field)
+        }
+
     private val dateText: String
         get() {
             val format = SimpleDateFormat()
@@ -38,9 +43,7 @@ class MainViewModel(
         return getCurrentDayNumber(GetCurrentDayCommand(currentDayNumber))
     }
 
-    val allCities: LiveData<List<City>> = _allCities
-    val currentDate: LiveData<String> = _currentDate
-    val currentDayNumber: LiveData<Int> = _currentDayNumber
+    val state: LiveData<MainActivityState> = _stateLiveData
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
@@ -50,12 +53,12 @@ class MainViewModel(
             listenAllCities()
         }
         viewModelScope.launch(Dispatchers.IO) {
-            _currentDayNumber.postValue(getCurrentDay())
+            _state = _state.copy(currentDayNumber = getCurrentDay())
+//            _currentDayNumber.postValue(getCurrentDay())
         }
-
-        _currentDate.postValue(dateText)
     }
 
-    private suspend fun listenAllCities() = getAllCities(Unit).collect { _allCities.postValue(it) }
+    private suspend fun listenAllCities() =
+        getAllCities(Unit).collect { _state = _state.copy(cities = it) }
 
 }
