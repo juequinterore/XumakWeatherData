@@ -12,9 +12,7 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Call
-import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.outlined.Delete
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -155,7 +153,7 @@ fun Topbar(navController: NavController) {
     ) {
         IconButton(onClick = { navController.navigate("search") }) {
             Icon(
-                imageVector = Icons.Filled.Search,
+                painter = painterResource(id = R.drawable.ic_icon_search),
                 contentDescription = "Search Button",
                 tint = Color.White
             )
@@ -163,14 +161,14 @@ fun Topbar(navController: NavController) {
         Row {
             IconButton(onClick = { Log.e("PUTA", "Click en Delete") }) {
                 Icon(
-                    imageVector = Icons.Filled.Delete,
+                    imageVector = Icons.Outlined.Delete,
                     contentDescription = "Delete Button",
                     tint = Color.White
                 )
             }
             IconButton(onClick = { Log.e("PUTA", "Click en Radar") }) {
                 Icon(
-                    imageVector = Icons.Filled.Call,
+                    painter = painterResource(id = R.drawable.ic_icon_radar),
                     contentDescription = "Radar Button",
                     tint = Color.White
                 )
