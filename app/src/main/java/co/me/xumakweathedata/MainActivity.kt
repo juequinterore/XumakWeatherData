@@ -16,12 +16,14 @@ import androidx.navigation.compose.rememberNavController
 import co.me.xumakweathedata.ui.search.SearchContent
 import co.me.xumakweathedata.ui.theme.MainContent
 import co.me.xumakweathedata.ui.theme.XumakWeatheDataTheme
+import kotlinx.coroutines.FlowPreview
 import org.koin.android.ext.android.inject
 
 class MainActivity : ComponentActivity() {
 
     private val viewModel: MainViewModel by inject()
 
+    @FlowPreview
     @ExperimentalUnitApi
     @ExperimentalFoundationApi
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,7 +53,7 @@ class MainActivity : ComponentActivity() {
                                 mainActivityState
                             )
                         }
-                        composable("search") { SearchContent() }
+                        composable("search") { SearchContent(navController) }
                     }
                 }
             }
