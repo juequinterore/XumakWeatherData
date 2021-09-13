@@ -20,11 +20,16 @@ class RetrofitCityRemoteDataSource(retrofit: Retrofit) : ICityRemoteDataSource {
     private val cityService: CityService = retrofit.create(CityService::class.java)
 
     override fun searchCityByName(cityName: String): CityDto? {
+        val cities = searchCitiesByName(cityName)
+
+        return cities.firstOrNull()
+    }
+
+    override fun searchCitiesByName(cityName: String): List<CityDto> {
         val call = cityService.getCitiesByName(cityName)
         val response = call.execute()
-        val cities = response.body()
 
-        return cities?.firstOrNull()
+        return response.body() ?: emptyList()
     }
 
     override fun getCityWeather(cityId: Int): Map<Int, WeatherDayDto> {
