@@ -27,6 +27,9 @@ class CityRepository(
     override suspend fun searchCityByName(name: String): City? =
         remoteCityDataSource.searchCityByName(name)?.toDomain()
 
+    override suspend fun searchCitiesByName(name: String): List<City> =
+        remoteCityDataSource.searchCitiesByName(name).map { it.toDomain() }
+
     override suspend fun getCityWeather(cityId: Int): Map<WeekDay, WeatherDay> =
         remoteCityDataSource.getCityWeather(cityId).entries
             .map { entry -> WeekDay(entry.key) to entry.value.toDomain() }

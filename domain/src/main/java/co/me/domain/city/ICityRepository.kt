@@ -13,6 +13,8 @@ interface ICityRepository {
 
     suspend fun searchCityByName(name: String): City?
 
+    suspend fun searchCitiesByName(name: String): List<City>
+
     suspend fun getCityWeather(cityId: Int): Map<WeekDay, WeatherDay>
 
 }
