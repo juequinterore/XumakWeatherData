@@ -114,5 +114,15 @@ fun CitySearchResults(cities: List<City>) {
 
 @Composable
 fun CityItem(city: City) {
-    Text(city.fullName)
+    val defaultPadding = 16.dp
+    Text(
+        city.fullName,
+        modifier = Modifier.padding(
+            top = defaultPadding,
+            start = defaultPadding,
+            end = defaultPadding,
+            bottom = 8.dp
+        )
+    )
+    Divider(Modifier.height(1.dp))
 }
