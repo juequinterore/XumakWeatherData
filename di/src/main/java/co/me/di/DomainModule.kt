@@ -21,4 +21,9 @@ val domainModule = module {
         SearchCitiesByName(cityRepository = get())
     }
 
+    single<IDeleteCity> {
+        DeleteCity(cityRepository = get())
+    }
+
+
 }
