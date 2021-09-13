@@ -1,9 +1,6 @@
 package co.me.infrastructure.city.repository.data_sources.local
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import co.me.infrastructure.city.dtos.CityDto
 import kotlinx.coroutines.flow.Flow
 
@@ -15,4 +12,7 @@ abstract class RoomCityLocalDataSource : ICityLocalDataSource {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract override fun insert(citiDto: CityDto)
+
+    @Delete
+    abstract fun delete(city: CityDto)
 }
