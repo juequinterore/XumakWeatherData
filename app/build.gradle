@@ -64,6 +64,8 @@ dependencies {
     implementation deps.koin.android
     implementation deps.koin.androidx_compose
     implementation deps.landscapist.glide
+    implementation deps.pager_layouts.core
+    implementation deps.pager_layouts.indicators
 
     testImplementation deps.junit.junit
     androidTestImplementation deps.androidx.android_junit_ext
