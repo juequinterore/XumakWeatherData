@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -58,7 +59,7 @@ fun SearchContent(navController: NavController) {
                 navController.popBackStack(route = "main", inclusive = false)
             }
         }
-        if(searchState.citySearch == CitySearchInProgress) {
+        if (searchState.citySearch == CitySearchInProgress) {
             CircularProgressIndicator(color = colorResource(id = R.color.inactive_week_day))
         }
     }
@@ -70,7 +71,7 @@ fun TopBar(navController: NavController) {
         IconButton(onClick = { navController.popBackStack() }) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_icon_close),
-                contentDescription = "Close Search Button",
+                contentDescription = stringResource(R.string.close_search_button_description),
                 tint = Color.Black
             )
         }
@@ -110,13 +111,18 @@ fun SearchTextField(searchState: SearchState, viewModel: SearchViewModel) {
 @Composable
 fun CitySearch(searchState: SearchState, viewModel: SearchViewModel) {
     when (searchState.citySearch) {
-        CitySearchError -> TextMessage(message = "Error during request. Try again later")
+        CitySearchError -> TextMessage(message = stringResource(R.string.error_during_search_request))
         CitySearchInProgress -> { /*Nothing to show*/
         }
         CitySearchInitial -> { /*Nothing to show*/
         }
         is CitySearchResult -> CitySearchResults(cities = searchState.citySearch.cities, viewModel)
-        CitySearchSuccessEmpty -> TextMessage(message = "No cities by: ${searchState.searchText}")
+        CitySearchSuccessEmpty -> TextMessage(
+            message = stringResource(
+                id = R.string.search_empty_result,
+                searchState.searchText
+            )
+        )
     }
 }
 

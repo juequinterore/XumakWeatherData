@@ -24,6 +24,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -117,10 +118,10 @@ fun ColumnScope.TopSection(
 
     Box(
         modifier = Modifier
-        .fillMaxWidth()
-        .fillMaxHeight()
-        .weight(3f)
-        .background(colorResource(id = R.color.main_gradient_start))
+            .fillMaxWidth()
+            .fillMaxHeight()
+            .weight(3f)
+            .background(colorResource(id = R.color.main_gradient_start))
     ) {
         HorizontalPager(state = pagerState,) {
             GlideImage(
@@ -155,7 +156,9 @@ fun TopSectionCityInfo(city: City?, currentDateText: String, currentDayNumber: I
     ) {
         HorizontalPagerIndicator(
             pagerState = pagerState,
-            modifier = Modifier.align(Alignment.CenterHorizontally).padding(16.dp),
+            modifier = Modifier
+                .align(Alignment.CenterHorizontally)
+                .padding(16.dp),
         )
         Text(
             text = city?.fullName ?: "",
@@ -181,7 +184,7 @@ fun Topbar(navController: NavController, viewModel: MainViewModel) {
         IconButton(onClick = { navController.navigate("search") }) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_icon_search),
-                contentDescription = "Search Button",
+                contentDescription = stringResource(R.string.search_button_description),
                 tint = Color.White
             )
         }
@@ -189,14 +192,14 @@ fun Topbar(navController: NavController, viewModel: MainViewModel) {
             IconButton(onClick = {viewModel.deleteSelectedCity()}) {
                 Icon(
                     imageVector = Icons.Outlined.Delete,
-                    contentDescription = "Delete Button",
+                    contentDescription = stringResource(R.string.delete_button_description),
                     tint = Color.White
                 )
             }
-            IconButton(onClick = { Log.e("PUTA", "Click en Radar") }) {
+            IconButton(onClick = {  }) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_icon_radar),
-                    contentDescription = "Radar Button",
+                    contentDescription = stringResource(R.string.radar_button_description),
                     tint = Color.White
                 )
             }
@@ -245,7 +248,7 @@ fun DayWeather(weatherDay: WeatherDay, isActive: Boolean) {
             color = color)
         Icon(
             painter = painterResource(weatherDay.weatherType.toIcon()),
-            contentDescription = "Day",
+            contentDescription = stringResource(R.string.day),
             tint = color,
             modifier = Modifier.size(20.dp)
         )
@@ -294,15 +297,15 @@ fun HourlyWeatherHeader() {
 
         Icon(
             imageVector = Icons.Filled.ArrowBack,
-            contentDescription = "Weather Icon",
+            contentDescription = stringResource(R.string.weather_icon_description),
             tint = Color.Transparent,
             modifier = modifier
         )
-        HourlyWeatherHeaderText(text = "Time")
-        HourlyWeatherHeaderText(text = "Temp")
-        HourlyWeatherHeaderText(text = "Chance\nof Rain")
-        HourlyWeatherHeaderText(text = "Wind\n(mph)")
-        HourlyWeatherHeaderText(text = "Humidity")
+        HourlyWeatherHeaderText(text = stringResource(R.string.time_header))
+        HourlyWeatherHeaderText(text = stringResource(R.string.temp_header))
+        HourlyWeatherHeaderText(text = stringResource(R.string.chance_of_rain_header))
+        HourlyWeatherHeaderText(text = stringResource(id = R.string.wihd_speed_header))
+        HourlyWeatherHeaderText(text = stringResource(R.string.humidity_header))
     }
 }
 
@@ -328,7 +331,7 @@ fun HourlyWeatherItem(hourlyWeather: HourlyWeather) {
 
         Icon(
             painter = painterResource(id = hourlyWeather.weatherType.toIcon()),
-            contentDescription = "Weather Icon",
+            contentDescription = stringResource(R.string.weather_icon_description),
             tint = Color.White,
             modifier = modifier
         )

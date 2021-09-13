@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">XumakWeatherData</string>
+    <string name="no_internet_connection">Unexpected Error.\nPlease check your internet connection</string>
+    <string name="search_button_description">Search Button</string>
+    <string name="delete_button_description">Delete Button</string>
+    <string name="radar_button_description">Radar Button</string>
+    <string name="time_header">Time</string>
+    <string name="temp_header">Temp</string>
+    <string name="humidity_header">Humidity</string>
+    <string name="chance_of_rain_header">Chance\nof Rain</string>
+    <string name="wihd_speed_header">Wind\n(mph)</string>
+    <string name="weather_icon_description">Weather Icon</string>
+    <string name="day">Day</string>
+    <string name="close_search_button_description">Close Search Button</string>
+    <string name="error_during_search_request">Error during request. Try again later</string>
+    <string name="search_empty_result">No cities by: %s</string>
 </resources>
