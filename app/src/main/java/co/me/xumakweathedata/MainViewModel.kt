@@ -15,6 +15,7 @@ import co.me.xumakweathedata.main.use_cases.InitialCitiesRequestCommand
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import java.net.UnknownHostException
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -57,7 +58,12 @@ class MainViewModel(
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            initialCitiesRequest(InitialCitiesRequestCommand("Calera"))
+            try {
+                initialCitiesRequest(InitialCitiesRequestCommand("Calera"))
+            } catch (ex: UnknownHostException) {
+                _state =
+                    _state.copy(currentDateText = "Unexpected Error.\nPlease check your internet connection")
+            }
         }
         viewModelScope.launch(Dispatchers.IO) {
             listenAllCities()
