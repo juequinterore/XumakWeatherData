@@ -16,12 +16,16 @@ class SearchCityByName(
     override suspend fun invoke(command: SearchCityByNameCommand): City? {
         val city = cityRepository.searchCityByName(command.name)
 
+        fillCityWeather(city)
+
+        return city
+    }
+
+    private suspend fun fillCityWeather(city: City?) =
         city?.let {
             val cityWeather = getCityWeather(GetCityWeatherCommand(it.id))
             it.weather = cityWeather
         }
 
-        return city
-    }
 
 }
