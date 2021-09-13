@@ -3,10 +3,7 @@ package co.me.xumakweathedata.di
 import co.me.di.APIURLQualifier
 import co.me.xumakweathedata.BuildConfig
 import co.me.xumakweathedata.MainViewModel
-import co.me.xumakweathedata.main.use_cases.GetCurrentDayNumber
-import co.me.xumakweathedata.main.use_cases.IGetCurrentDayNumber
-import co.me.xumakweathedata.main.use_cases.IInitialCitiesRequest
-import co.me.xumakweathedata.main.use_cases.InitialCitiesCitiesRequest
+import co.me.xumakweathedata.main.use_cases.*
 import co.me.xumakweathedata.ui.search.SearchViewModel
 import kotlinx.coroutines.FlowPreview
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -28,7 +25,7 @@ val appModule = module {
     }
 
     viewModel {
-        SearchViewModel(searchCitiesByName = get())
+        SearchViewModel(searchCitiesByName = get(), searchAndSaveCityByName = get())
     }
 
     single<IInitialCitiesRequest> {
@@ -41,5 +38,9 @@ val appModule = module {
 
     single<IGetCurrentDayNumber> {
         GetCurrentDayNumber()
+    }
+
+    single<ISearchAndSaveCityByName> {
+        SearchAndSaveCityByName(searchCityByName = get(), citiesRepository = get())
     }
 }
