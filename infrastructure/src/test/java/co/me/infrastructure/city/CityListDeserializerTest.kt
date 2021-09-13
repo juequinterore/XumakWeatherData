@@ -34,7 +34,7 @@ class CityListDeserializerTest {
         //Assert
         val expectedCities = listOf(
             CityDto(
-                geonameid = 4053050,
+                geoNameId = 4053050,
                 name = "Calera",
                 adminCode1 = "AL",
                 imageUrl = "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/xhdpi/img_austin.png",
@@ -42,7 +42,7 @@ class CityListDeserializerTest {
             ),
 
             CityDto(
-                geonameid = 4054852,
+                geoNameId = 4054852,
                 name = "Chelsea",
                 adminCode1 = "AL",
                 imageUrl = "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/xhdpi/img_dallas.png",
@@ -50,7 +50,7 @@ class CityListDeserializerTest {
             ),
 
             CityDto(
-                geonameid = 4049979,
+                geoNameId = 4049979,
                 name = "Birmingham",
                 adminCode1 = "AL",
                 imageUrl = "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/xhdpi/img_austin.png",
@@ -58,7 +58,7 @@ class CityListDeserializerTest {
             ),
 
             CityDto(
-                geonameid = 4055045,
+                geoNameId = 4055045,
                 name = "Childersburg",
                 adminCode1 = "AL",
                 imageUrl = "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/xhdpi/img_sanfranisco.png",
@@ -66,7 +66,7 @@ class CityListDeserializerTest {
             ),
 
             CityDto(
-                geonameid = 4048888,
+                geoNameId = 4048888,
                 name = "Red Chute",
                 adminCode1 = "LA",
                 imageUrl = "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/xhdpi/img_dallas.png",
@@ -74,7 +74,7 @@ class CityListDeserializerTest {
             ),
 
             CityDto(
-                geonameid = 4054996,
+                geoNameId = 4054996,
                 name = "Chickasaw",
                 adminCode1 = "AL",
                 imageUrl = "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/xhdpi/img_austin.png",

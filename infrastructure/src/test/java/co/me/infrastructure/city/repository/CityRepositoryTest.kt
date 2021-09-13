@@ -100,7 +100,7 @@ class CityRepositoryTest {
     fun `should return remoteDataSource CityDto converted into City`() = runBlocking {
         //Arrange
         val fakeCityDto = CityDto(
-            geonameid = 20001201,
+            geoNameId = 20001201,
             name = "Medellín",
             imageUrl = "https://myImage.co/image.jpg",
             adminCode1 = "Antioquia",
@@ -300,14 +300,14 @@ class CityRepositoryTest {
     fun `should return localDataSource CityDtos converted into Cities`() = runBlocking {
         //Arrange
         val fakeCityDto = CityDto(
-            geonameid = 20001201,
+            geoNameId = 20001201,
             name = "Medellín",
             adminCode1 = "Antioquia",
             imageUrl = "https://myImage.co/image.jpg",
             weather = mapOf()
         )
         val fakeCityDto2 = CityDto(
-            geonameid = 2111221,
+            geoNameId = 2111221,
             name = "Bogotá",
             adminCode1 = "Cundinamarca",
             imageUrl = "https://myImage.co/image2.jpg",

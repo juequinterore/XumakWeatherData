@@ -12,7 +12,7 @@ class CityDtoTest {
 
         //Arrange
         val cityDto = CityDto(
-            geonameid = 1234,
+            geoNameId = 1234,
             name = "Medellín",
             adminCode1 = "Antioquia",
             imageUrl = "https://medellin.co/image.png",

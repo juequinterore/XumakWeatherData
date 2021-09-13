@@ -44,7 +44,7 @@ class XumakWeatherDatabaseTest {
     fun insertAndGetNight() = runBlocking {
         //Arrange
         val cityDto = CityDto(
-            geonameid = 1234,
+            geoNameId = 1234,
             name = "Medellín",
             imageUrl = "https://medellin.co/image.png",
             weather = mapOf(
