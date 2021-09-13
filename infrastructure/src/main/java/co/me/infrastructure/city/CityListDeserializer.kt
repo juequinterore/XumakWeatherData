@@ -26,7 +26,7 @@ class CityListDeserializer : JsonDeserializer<List<CityDto>> {
             val imageUrl = androidImageURLs?.get("xhdpiImageURL")?.asString
 
             CityDto(
-                geonameid = geonameid!!,
+                geoNameId = geonameid!!,
                 name = name!!,
                 imageUrl = imageUrl!!,
                 adminCode1 = adminCode1!!,
