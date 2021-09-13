@@ -31,8 +31,7 @@ class MainViewModel(
 
     private val dateText: String
         get() {
-            val format = SimpleDateFormat()
-            format.applyLocalizedPattern("EEE, MM/dd/yy HH:mm aa")
+            val format = SimpleDateFormat("EEE, MM/dd/yy HH:mm aa", Locale.US)
             return format.format(Calendar.getInstance().time)
         }
 
@@ -54,7 +53,6 @@ class MainViewModel(
         }
         viewModelScope.launch(Dispatchers.IO) {
             _state = _state.copy(currentDayNumber = getCurrentDay())
-//            _currentDayNumber.postValue(getCurrentDay())
         }
     }
 
