@@ -11,6 +11,7 @@ import co.me.domain.entities.City
 import co.me.xumakweathedata.main.use_cases.GetCurrentDayCommand
 import co.me.xumakweathedata.main.use_cases.IGetCurrentDayNumber
 import co.me.xumakweathedata.main.use_cases.IInitialCitiesRequest
+import co.me.xumakweathedata.main.use_cases.InitialCitiesRequestCommand
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -56,7 +57,7 @@ class MainViewModel(
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            initialCitiesRequest(Unit)
+            initialCitiesRequest(InitialCitiesRequestCommand("Calera"))
         }
         viewModelScope.launch(Dispatchers.IO) {
             listenAllCities()

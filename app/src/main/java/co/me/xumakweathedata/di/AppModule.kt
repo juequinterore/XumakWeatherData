@@ -32,8 +32,7 @@ val appModule = module {
     single<IInitialCitiesRequest> {
         InitialCitiesCitiesRequest(
             getAllCities = get(),
-            citiesRepository = get(),
-            searchCityByName = get()
+            searchAndSaveCityByName = get()
         )
     }
 
