@@ -47,6 +47,7 @@ class XumakWeatherDatabaseTest {
             geoNameId = 1234,
             name = "Medellín",
             imageUrl = "https://medellin.co/image.png",
+            adminCode1 = "Antioquia",
             weather = mapOf(
                 6 to WeatherDayDto(
                     dayOfTheWeek = 6,

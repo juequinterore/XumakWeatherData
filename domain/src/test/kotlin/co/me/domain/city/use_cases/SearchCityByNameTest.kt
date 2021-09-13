@@ -36,6 +36,10 @@ class SearchCityByNameTest {
             return city
         }
 
+        override suspend fun searchCitiesByName(name: String): List<City> {
+            TODO("Not yet implemented")
+        }
+
         override suspend fun getCityWeather(cityId: Int): Map<WeekDay, WeatherDay> {
             return if (cityId == city?.id)
                 weather

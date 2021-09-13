@@ -25,6 +25,10 @@ class GetAllCitiesTest {
             TODO("Not yet implemented")
         }
 
+        override suspend fun searchCitiesByName(name: String): List<City> {
+            TODO("Not yet implemented")
+        }
+
         override suspend fun getCityWeather(cityId: Int): Map<WeekDay, WeatherDay> {
             TODO("Not yet implemented")
         }

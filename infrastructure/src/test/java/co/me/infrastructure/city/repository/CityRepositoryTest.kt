@@ -35,6 +35,10 @@ class FakeCityRemoteDataSource(
         return searchCity
     }
 
+    override fun searchCitiesByName(cityName: String): List<CityDto> {
+        TODO("Not yet implemented")
+    }
+
     override fun getCityWeather(cityId: Int): Map<Int, WeatherDayDto> {
         _getCityWeatherCityId = cityId
         return cityWeather
