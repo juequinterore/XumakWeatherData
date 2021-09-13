@@ -14,5 +14,5 @@ abstract class RoomCityLocalDataSource : ICityLocalDataSource {
     abstract override fun insert(citiDto: CityDto)
 
     @Delete
-    abstract fun delete(city: CityDto)
+    abstract override fun delete(city: CityDto)
 }

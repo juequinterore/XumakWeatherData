@@ -5,5 +5,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface ICityLocalDataSource {
     fun insert(citiDto: CityDto)
+    fun delete(citiDto: CityDto)
     fun getAllCities(): Flow<List<CityDto>>
 }

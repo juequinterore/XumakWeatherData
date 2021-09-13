@@ -17,4 +17,6 @@ interface ICityRepository {
 
     suspend fun getCityWeather(cityId: Int): Map<WeekDay, WeatherDay>
 
+    suspend fun deleteCity(city: City)
+
 }

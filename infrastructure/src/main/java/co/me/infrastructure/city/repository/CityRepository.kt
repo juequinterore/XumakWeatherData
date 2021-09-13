@@ -34,4 +34,6 @@ class CityRepository(
         remoteCityDataSource.getCityWeather(cityId).entries
             .map { entry -> WeekDay(entry.key) to entry.value.toDomain() }
             .toMap()
+
+    override suspend fun deleteCity(city: City) = localCityDataSource.delete(CityDto.fromDomain(city))
 }
