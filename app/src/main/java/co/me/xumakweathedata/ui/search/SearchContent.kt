@@ -1,5 +1,6 @@
 package co.me.xumakweathedata.ui.search
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -13,7 +14,6 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -24,11 +24,11 @@ import org.koin.androidx.compose.getViewModel
 
 
 @FlowPreview
-@Preview
 @Composable
-fun SearchContent(navController: NavController? = null) {
+fun SearchContent(navController: NavController) {
 
     val viewModel = getViewModel<SearchViewModel>()
+    val goBack: Boolean by viewModel.goBackLiveData.observeAsState(initial = false)
 
     val searchState: SearchState by viewModel.state.observeAsState(
         initial = SearchState(
@@ -45,14 +45,17 @@ fun SearchContent(navController: NavController? = null) {
     ) {
         TopBar(navController = navController)
         SearchTextField(searchState, viewModel)
-        CitySearch(searchState)
+        CitySearch(searchState, viewModel)
+        if (goBack) {
+            navController.popBackStack(route = "main", inclusive = false)
+        }
     }
 }
 
 @Composable
-fun TopBar(navController: NavController?) {
+fun TopBar(navController: NavController) {
     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
-        IconButton(onClick = { navController?.popBackStack() }) {
+        IconButton(onClick = { navController.popBackStack() }) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_icon_close),
                 contentDescription = "Close Search Button",
@@ -91,38 +94,44 @@ fun SearchTextField(searchState: SearchState, viewModel: SearchViewModel) {
     )
 }
 
+@FlowPreview
 @Composable
-fun CitySearch(searchState: SearchState) {
+fun CitySearch(searchState: SearchState, viewModel: SearchViewModel) {
     when (searchState.citySearch) {
         CitySearchError -> TextMessage(message = "Error during request. Try again later")
         CitySearchInProgress -> TextMessage(message = "Loading Data")
         CitySearchInitial -> { /*Nothing to show*/
         }
-        is CitySearchResult -> CitySearchResults(cities = searchState.citySearch.cities)
+        is CitySearchResult -> CitySearchResults(cities = searchState.citySearch.cities, viewModel)
         CitySearchSuccessEmpty -> TextMessage(message = "No cities by: ${searchState.searchText}")
     }
 }
 
+@FlowPreview
 @Composable
-fun CitySearchResults(cities: List<City>) {
+fun CitySearchResults(cities: List<City>, viewModel: SearchViewModel) {
     LazyColumn(verticalArrangement = Arrangement.spacedBy(12.dp)) {
         items(cities) { city ->
-            CityItem(city)
+            CityItem(city, viewModel)
         }
     }
 }
 
+@FlowPreview
 @Composable
-fun CityItem(city: City) {
+fun CityItem(city: City, viewModel: SearchViewModel) {
     val defaultPadding = 16.dp
-    Text(
-        city.fullName,
-        modifier = Modifier.padding(
-            top = defaultPadding,
-            start = defaultPadding,
-            end = defaultPadding,
-            bottom = 8.dp
+    Column(
+        Modifier
+            .clickable { viewModel.citySelected(city) }) {
+        Text(
+            city.fullName,
+            modifier = Modifier.padding(
+                top = defaultPadding,
+                start = defaultPadding,
+                end = defaultPadding,
+            )
         )
-    )
-    Divider(Modifier.height(1.dp))
+        Divider(Modifier.height(1.dp))
+    }
 }
