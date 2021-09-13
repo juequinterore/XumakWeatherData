@@ -8,6 +8,7 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
@@ -37,17 +38,28 @@ fun SearchContent(navController: NavController) {
         )
     )
 
-    Column(
+    Box(
         modifier = Modifier
             .fillMaxWidth()
             .fillMaxHeight()
-            .padding(35.dp)
-    ) {
-        TopBar(navController = navController)
-        SearchTextField(searchState, viewModel)
-        CitySearch(searchState, viewModel)
-        if (goBack) {
-            navController.popBackStack(route = "main", inclusive = false)
+            .padding(35.dp),
+        contentAlignment = Alignment.Center
+    )
+    {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight()
+        ) {
+            TopBar(navController = navController)
+            SearchTextField(searchState, viewModel)
+            CitySearch(searchState, viewModel)
+            if (goBack) {
+                navController.popBackStack(route = "main", inclusive = false)
+            }
+        }
+        if(searchState.citySearch == CitySearchInProgress) {
+            CircularProgressIndicator(color = colorResource(id = R.color.inactive_week_day))
         }
     }
 }
@@ -99,7 +111,8 @@ fun SearchTextField(searchState: SearchState, viewModel: SearchViewModel) {
 fun CitySearch(searchState: SearchState, viewModel: SearchViewModel) {
     when (searchState.citySearch) {
         CitySearchError -> TextMessage(message = "Error during request. Try again later")
-        CitySearchInProgress -> TextMessage(message = "Loading Data")
+        CitySearchInProgress -> { /*Nothing to show*/
+        }
         CitySearchInitial -> { /*Nothing to show*/
         }
         is CitySearchResult -> CitySearchResults(cities = searchState.citySearch.cities, viewModel)

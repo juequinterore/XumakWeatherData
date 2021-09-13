@@ -73,8 +73,11 @@ class SearchViewModel(
     }
 
     fun citySelected(city: City) {
+        val previousCitySearch = _state.citySearch
+        _state = _state.copy(citySearch = CitySearchInProgress, searchText = city.fullName)
         viewModelScope.launch(Dispatchers.IO) {
             searchAndSaveCityByName(SearchAndSaveCityByNameCommand(city.name))
+            _state = _state.copy(citySearch = previousCitySearch)
             _goBackLiveData.postValue(true)
         }
     }
