@@ -16,9 +16,11 @@ import androidx.navigation.compose.rememberNavController
 import co.me.xumakweathedata.ui.search.SearchContent
 import co.me.xumakweathedata.ui.theme.MainContent
 import co.me.xumakweathedata.ui.theme.XumakWeatheDataTheme
+import com.google.accompanist.pager.ExperimentalPagerApi
 import kotlinx.coroutines.FlowPreview
 import org.koin.android.ext.android.inject
 
+@ExperimentalPagerApi
 class MainActivity : ComponentActivity() {
 
     private val viewModel: MainViewModel by inject()
@@ -40,9 +42,11 @@ class MainActivity : ComponentActivity() {
 
                     val mainActivityState: MainActivityState by viewModel.state.observeAsState(
                         MainActivityState(
+                            city = null,
                             cities = emptyList(),
                             currentDayNumber = 0,
-                            currentDateText = ""
+                            currentDateText = "",
+                            selectedCityIndex = -1
                         )
                     )
 
@@ -50,7 +54,8 @@ class MainActivity : ComponentActivity() {
                         composable("main") {
                             MainContent(
                                 navController,
-                                mainActivityState
+                                mainActivityState,
+                                viewModel
                             )
                         }
                         composable("search") { SearchContent(navController) }

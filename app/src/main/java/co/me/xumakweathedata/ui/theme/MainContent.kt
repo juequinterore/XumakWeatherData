@@ -14,6 +14,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.outlined.Delete
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -33,22 +35,27 @@ import co.me.domain.value_objects.HourlyWeather
 import co.me.domain.value_objects.WeatherDay
 import co.me.domain.value_objects.WeekDay
 import co.me.xumakweathedata.MainActivityState
+import co.me.xumakweathedata.MainViewModel
 import co.me.xumakweathedata.R
 import co.me.xumakweathedata.extensions.toIcon
 import com.bumptech.glide.request.RequestOptions
+import com.google.accompanist.pager.*
 import com.skydoves.landscapist.CircularReveal
 import com.skydoves.landscapist.glide.GlideImage
+import kotlinx.coroutines.flow.collect
 
+@ExperimentalPagerApi
 @ExperimentalFoundationApi
 @Composable
-fun MainContent(navController: NavController, state: MainActivityState) {
+fun MainContent(navController: NavController, state: MainActivityState, viewModel: MainViewModel) {
+    
     Box{
         Column(
             modifier = Modifier
                 .fillMaxWidth()
         ) {
-            TopSection(navController, state)
-            BottomSection(city = state.cities.firstOrNull(), currentDayNumber = state.currentDayNumber)
+            TopSection(navController, state, state.city, viewModel)
+            BottomSection(city = state.city, currentDayNumber = state.currentDayNumber)
         }
     }
 }
@@ -95,34 +102,50 @@ fun ColumnScope.BottomSection(city: City?, currentDayNumber: Int) {
     }
 }
 
+@ExperimentalPagerApi
 @Composable
 fun ColumnScope.TopSection(
     navController: NavController,
-    state: MainActivityState
+    state: MainActivityState,
+    city: City?,
+    viewModel: MainViewModel
 ) {
-    Box(modifier = Modifier
+    val pagerState = rememberPagerState(pageCount = state.cities.size)
+        LaunchedEffect(pagerState){
+            snapshotFlow { pagerState.currentPage }.collect { viewModel.selectedCityIndexChanged(it) }
+        }
+
+    Box(
+        modifier = Modifier
         .fillMaxWidth()
         .fillMaxHeight()
         .weight(3f)
-        .background(colorResource(id = R.color.main_gradient_start))) {
-        val city = state.cities.firstOrNull()
-        GlideImage(
-            imageModel = city?.imageUrl?.value ?: "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/xhdpi/img_dallas.png",
-            contentScale = ContentScale.Crop,
-            circularReveal = CircularReveal(duration = 250),
-            requestOptions = RequestOptions().centerCrop(),
-            modifier = Modifier.alpha(0.9f)
-        )
-        Box{
-            Topbar(navController)
-            TopSectionCityInfo(city = city, currentDateText = state.currentDateText, currentDayNumber = state.currentDayNumber)
+        .background(colorResource(id = R.color.main_gradient_start))
+    ) {
+        HorizontalPager(state = pagerState,) {
+            GlideImage(
+                imageModel = city?.imageUrl?.value ?: "https://all-the-weather-resources.s3.amazonaws.com/Images/Android_City_Images/xhdpi/img_dallas.png",
+                contentScale = ContentScale.Crop,
+                circularReveal = CircularReveal(duration = 250),
+                requestOptions = RequestOptions().centerCrop(),
+                modifier = Modifier.alpha(0.9f)
+            )
+
         }
+
+        Topbar(navController)
+        TopSectionCityInfo(
+            city = city,
+            currentDateText = state.currentDateText,
+            currentDayNumber = state.currentDayNumber,
+            pagerState = pagerState)
 
     }
 }
 
+@ExperimentalPagerApi
 @Composable
-fun TopSectionCityInfo(city: City?, currentDateText: String, currentDayNumber: Int) {
+fun TopSectionCityInfo(city: City?, currentDateText: String, currentDayNumber: Int, pagerState: PagerState) {
     Column(
         modifier = Modifier
             .fillMaxHeight()
@@ -130,6 +153,10 @@ fun TopSectionCityInfo(city: City?, currentDateText: String, currentDayNumber: I
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        HorizontalPagerIndicator(
+            pagerState = pagerState,
+            modifier = Modifier.align(Alignment.CenterHorizontally).padding(16.dp),
+        )
         Text(
             text = city?.fullName ?: "",
             fontSize = 16.sp,
