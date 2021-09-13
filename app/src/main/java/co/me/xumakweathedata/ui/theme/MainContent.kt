@@ -133,7 +133,7 @@ fun ColumnScope.TopSection(
 
         }
 
-        Topbar(navController)
+        Topbar(navController, viewModel)
         TopSectionCityInfo(
             city = city,
             currentDateText = state.currentDateText,
@@ -171,7 +171,7 @@ fun TopSectionCityInfo(city: City?, currentDateText: String, currentDayNumber: I
 }
 
 @Composable
-fun Topbar(navController: NavController) {
+fun Topbar(navController: NavController, viewModel: MainViewModel) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -186,7 +186,7 @@ fun Topbar(navController: NavController) {
             )
         }
         Row {
-            IconButton(onClick = { Log.e("PUTA", "Click en Delete") }) {
+            IconButton(onClick = {viewModel.deleteSelectedCity()}) {
                 Icon(
                     imageVector = Icons.Outlined.Delete,
                     contentDescription = "Delete Button",

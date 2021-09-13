@@ -18,9 +18,10 @@ val appModule = module {
 
     viewModel {
         MainViewModel(
+            deleteCity = get(),
             getAllCities = get(),
+            getCurrentDayNumber = get(),
             initialCitiesRequest = get(),
-            getCurrentDayNumber = get()
         )
     }
 

@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import co.me.domain.city.use_cases.DeleteCityCommand
+import co.me.domain.city.use_cases.IDeleteCity
 import co.me.domain.city.use_cases.IGetAllCities
 import co.me.domain.entities.City
 import co.me.xumakweathedata.main.use_cases.GetCurrentDayCommand
@@ -18,6 +20,7 @@ import java.util.*
 class MainViewModel(
     private val initialCitiesRequest: IInitialCitiesRequest,
     private val getCurrentDayNumber: IGetCurrentDayNumber,
+    private val deleteCity: IDeleteCity,
     private val getAllCities: IGetAllCities,
 ) : ViewModel() {
 
@@ -63,6 +66,23 @@ class MainViewModel(
         }
     }
 
+    fun selectedCityIndexChanged(it: Int) {
+        _state = getStateWithNewSelectedCity(
+            latestSelectedCityIndex = it,
+            latestCities = _state.cities
+        ).copy(
+            selectedCityIndex = it
+        )
+    }
+
+    fun deleteSelectedCity() {
+        viewModelScope.launch(Dispatchers.IO) {
+            _state.city?.let {
+                deleteCity(DeleteCityCommand(it))
+            }
+        }
+    }
+
     private suspend fun listenAllCities() =
         getAllCities(Unit).collect {
             _state = getStateWithNewSelectedCity(
@@ -86,14 +106,5 @@ class MainViewModel(
 
     private fun isValidCityIndex(latestSelectedCityIndex: Int, latestCitiesSize: Int): Boolean =
         latestSelectedCityIndex > -1 && latestSelectedCityIndex < latestCitiesSize
-
-    fun selectedCityIndexChanged(it: Int) {
-        _state = getStateWithNewSelectedCity(
-            latestSelectedCityIndex = it,
-            latestCities = _state.cities
-        ).copy(
-            selectedCityIndex = it
-        )
-    }
 
 }
