@@ -33,6 +33,10 @@ class GetAllCitiesTest {
             TODO("Not yet implemented")
         }
 
+        override suspend fun deleteCity(city: City) {
+            TODO("Not yet implemented")
+        }
+
     }
 
     @Test

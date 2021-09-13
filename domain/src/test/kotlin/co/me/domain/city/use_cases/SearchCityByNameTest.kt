@@ -46,6 +46,10 @@ class SearchCityByNameTest {
             else
                 mapOf()
         }
+
+        override suspend fun deleteCity(city: City) {
+            TODO("Not yet implemented")
+        }
     }
 
     @Test

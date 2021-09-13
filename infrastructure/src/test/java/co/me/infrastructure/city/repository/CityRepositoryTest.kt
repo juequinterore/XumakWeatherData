@@ -58,6 +58,10 @@ class FakeCityLocalDataSource(private val allCities: List<CityDto> = emptyList()
         TODO("Not yet implemented")
     }
 
+    override fun delete(citiDto: CityDto) {
+        TODO("Not yet implemented")
+    }
+
     override fun getAllCities(): Flow<List<CityDto>> {
         _isGetAllCitiesCalled = true
         return flow { emit(allCities) }

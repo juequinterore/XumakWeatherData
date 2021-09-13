@@ -38,6 +38,10 @@ class GetCityWeatherTest {
             return cityWeather
         }
 
+        override suspend fun deleteCity(city: City) {
+            TODO("Not yet implemented")
+        }
+
     }
 
     @Test
