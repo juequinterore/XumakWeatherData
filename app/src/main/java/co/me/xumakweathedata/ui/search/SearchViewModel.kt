@@ -6,6 +6,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import co.me.domain.city.use_cases.ISearchCitiesByName
 import co.me.domain.city.use_cases.SearchCitiesByNameCommand
+import co.me.domain.entities.City
+import co.me.xumakweathedata.main.use_cases.ISearchAndSaveCityByName
+import co.me.xumakweathedata.main.use_cases.SearchAndSaveCityByNameCommand
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.Job
@@ -16,8 +19,12 @@ import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.launch
 
 @FlowPreview
-class SearchViewModel(private val searchCitiesByName: ISearchCitiesByName) : ViewModel() {
+class SearchViewModel(
+    private val searchCitiesByName: ISearchCitiesByName,
+    private val searchAndSaveCityByName: ISearchAndSaveCityByName
+) : ViewModel() {
 
+    private val _goBackLiveData = MutableLiveData<Boolean>()
     private val _searchChannel = Channel<String>()
     private val _stateLiveData = MutableLiveData<SearchState>()
 
@@ -28,6 +35,7 @@ class SearchViewModel(private val searchCitiesByName: ISearchCitiesByName) : Vie
         }
 
     val state: LiveData<SearchState> = _stateLiveData
+    val goBackLiveData: LiveData<Boolean> = _goBackLiveData
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
@@ -61,6 +69,13 @@ class SearchViewModel(private val searchCitiesByName: ISearchCitiesByName) : Vie
         _state = _state.copy(searchText = newText)
         viewModelScope.launch(Dispatchers.IO) {
             _searchChannel.send(newText)
+        }
+    }
+
+    fun citySelected(city: City) {
+        viewModelScope.launch(Dispatchers.IO) {
+            searchAndSaveCityByName(SearchAndSaveCityByNameCommand(city.name))
+            _goBackLiveData.postValue(true)
         }
     }
 
