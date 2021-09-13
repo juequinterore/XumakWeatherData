@@ -62,6 +62,7 @@ dependencies {
     implementation deps.androidx.activity_compose
     implementation deps.androidx.compose_navigation
     implementation deps.koin.android
+    implementation deps.koin.androidx_compose
     implementation deps.landscapist.glide
 
     testImplementation deps.junit.junit

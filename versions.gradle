@@ -76,6 +76,7 @@ deps.junit = junit
 
 def koin = [:]
 koin.android = "io.insert-koin:koin-android:$versions.koin"
+koin.androidx_compose = "io.insert-koin:koin-androidx-compose:$versions.koin"
 koin.core = "io.insert-koin:koin-core:$versions.koin"
 koin.junit = "io.insert-koin:koin-test-junit4:$versions.koin"
 koin.test = "io.insert-koin:koin-test:$versions.koin"
